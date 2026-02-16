@@ -6,13 +6,18 @@ A clean, minimal single-page CV with warm earth tones and BibTeX support.
 
 1. **Fork or clone this repository**
 
-2. **Edit `index.html`**
+2. **Add your profile picture**
+   - Add an image file named `profile.jpg` to the repository
+   - Recommended size: at least 400x400 pixels (square)
+   - Supported formats: `.jpg`, `.jpeg`, `.png` (just update `src="profile.jpg"` in index.html if using a different name)
+
+3. **Edit `index.html`**
    - Replace "Your Name" with your actual name
    - Update the tagline and about section
    - Add your contact information (email, GitHub, Google Scholar links)
    - Update the education section with your degrees
 
-3. **Update `publications.bib`**
+4. **Update `publications.bib`**
    - Replace the example entries with your own publications
    - The BibTeX format supports:
      - `@article` for journal papers
@@ -20,7 +25,7 @@ A clean, minimal single-page CV with warm earth tones and BibTeX support.
      - `@book` for books
      - `@phdthesis` or `@mastersthesis` for theses
    
-4. **Enable GitHub Pages**
+5. **Enable GitHub Pages**
    - Go to your repository Settings
    - Navigate to "Pages" in the left sidebar
    - Under "Source", select the branch (usually `main` or `master`)
