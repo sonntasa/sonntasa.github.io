@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sand: #F5F1E8;
+            --warm-stone: #E8DFD0;
+            --terracotta: #C17B5C;
+            --deep-earth: #8B6F47;
+            --charcoal: #3D3834;
+            --accent-rust: #A85C3A;
+            
+            --shadow-soft: 0 2px 12px rgba(61, 56, 52, 0.08);
+            --shadow-medium: 0 4px 24px rgba(61, 56, 52, 0.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: linear-gradient(135deg, var(--sand) 0%, var(--warm-stone) 100%);
+            color: var(--charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        header {
+            background: white;
+            padding: 50px 60px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-medium);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            animation: slideDown 0.6s ease-out 0.2s backwards;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--terracotta), var(--accent-rust));
+            border-radius: 24px 24px 0 0;
+        }
+        
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--deep-earth);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding-top: 30px;
+            border-top: 1px solid var(--warm-stone);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--deep-earth);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 12px;
+            background: var(--sand);
+        }
+        
+        .contact-item:hover {
+            background: var(--warm-stone);
+            color: var(--accent-rust);
+            transform: translateY(-2px);
+        }
+        
+        .contact-item svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+        
+        section {
+            background: white;
+            padding: 45px 60px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        
+        section:nth-child(2) { animation-delay: 0.3s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.5s; }
+        section:nth-child(5) { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        section:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-2px);
+        }
+        
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--terracotta);
+            margin-bottom: 30px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--warm-stone);
+            letter-spacing: -0.01em;
+        }
+        
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+        }
+        
+        .edu-item, .pub-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--warm-stone);
+        }
+        
+        .edu-item:last-child, .pub-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .degree {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+        
+        .year {
+            font-size: 0.95rem;
+            color: var(--deep-earth);
+            background: var(--sand);
+            padding: 4px 14px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        
+        .institution {
+            font-size: 1.05rem;
+            color: var(--deep-earth);
+            font-weight: 400;
+        }
+        
+        .pub-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+        
+        .pub-authors {
+            font-size: 0.95rem;
+            color: var(--deep-earth);
+            margin-bottom: 4px;
+        }
+        
+        .pub-venue {
+            font-size: 0.9rem;
+            color: var(--accent-rust);
+            font-style: italic;
+        }
+        
+        .loading {
+            text-align: center;
+            color: var(--deep-earth);
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 24px;
+            }
+            
+            header, section {
+                padding: 35px 35px;
+                border-radius: 18px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .edu-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Selection styling */
+        ::selection {
+            background: var(--terracotta);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Your Name</h1>
+            <p class="tagline">Researcher & Academic</p>
+            
+            <div class="contact-info">
+                <a href="mailto:your.email@example.com" class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    your.email@example.com
+                </a>
+                <a href="https://github.com/yourusername" class="contact-item" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://scholar.google.com" class="contact-item" target="_blank">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 2.18l8 4V13c0 4.52-3.13 8.75-8 9.92-4.87-1.17-8-5.4-8-9.92V8.18l8-4zM10 12v5h4v-5h-4z"/></svg>
+                    Google Scholar
+                </a>
+            </div>
+        </header>
+
+        <section id="about">
+            <h2>About</h2>
+            <p class="about-text">
+                Write a brief bio here. Describe your research interests, academic background, and what drives your work. 
+                This should be 2-4 sentences that give readers a quick overview of who you are and what you do.
+            </p>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            
+            <div class="edu-item">
+                <div class="edu-header">
+                    <span class="degree">Ph.D. in Your Field</span>
+                    <span class="year">2020 – 2025</span>
+                </div>
+                <div class="institution">University Name</div>
+            </div>
+            
+            <div class="edu-item">
+                <div class="edu-header">
+                    <span class="degree">M.Sc. in Your Field</span>
+                    <span class="year">2018 – 2020</span>
+                </div>
+                <div class="institution">University Name</div>
+            </div>
+            
+            <div class="edu-item">
+                <div class="edu-header">
+                    <span class="degree">B.Sc. in Your Field</span>
+                    <span class="year">2014 – 2018</span>
+                </div>
+                <div class="institution">University Name</div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            <div id="publications-list">
+                <div class="loading">Loading publications...</div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p class="about-text">
+                Feel free to reach out via email at <a href="mailto:your.email@example.com" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">your.email@example.com</a> 
+                or connect with me on the platforms listed above.
+            </p>
+        </section>
+    </div>
+
+    <!-- BibTeX Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/bibtex-parse@1.0.0/index.js"></script>
+    
+    <script>
+        // Load and parse BibTeX file
+        async function loadPublications() {
+            try {
+                const response = await fetch('publications.bib');
+                const bibtext = await response.text();
+                
+                // Parse BibTeX
+                const entries = parseBibTeX(bibtext);
+                
+                // Sort by year (descending)
+                entries.sort((a, b) => {
+                    const yearA = parseInt(a.fields.year) || 0;
+                    const yearB = parseInt(b.fields.year) || 0;
+                    return yearB - yearA;
+                });
+                
+                // Display publications
+                displayPublications(entries);
+            } catch (error) {
+                console.error('Error loading publications:', error);
+                document.getElementById('publications-list').innerHTML = 
+                    '<p style="color: var(--deep-earth); font-style: italic;">Publications file not found. Please add a publications.bib file to your repository.</p>';
+            }
+        }
+        
+        function parseBibTeX(bibtext) {
+            // Simple BibTeX parser
+            const entries = [];
+            const entryRegex = /@(\w+)\{([^,]+),\s*([\s\S]+?)\n\}/g;
+            let match;
+            
+            while ((match = entryRegex.exec(bibtext)) !== null) {
+                const type = match[1];
+                const key = match[2];
+                const fieldsText = match[3];
+                
+                const fields = {};
+                const fieldRegex = /(\w+)\s*=\s*\{([^}]+)\}|(\w+)\s*=\s*"([^"]+)"/g;
+                let fieldMatch;
+                
+                while ((fieldMatch = fieldRegex.exec(fieldsText)) !== null) {
+                    const fieldName = fieldMatch[1] || fieldMatch[3];
+                    const fieldValue = fieldMatch[2] || fieldMatch[4];
+                    fields[fieldName.toLowerCase()] = fieldValue;
+                }
+                
+                entries.push({ type, key, fields });
+            }
+            
+            return entries;
+        }
+        
+        function displayPublications(entries) {
+            const container = document.getElementById('publications-list');
+            
+            if (entries.length === 0) {
+                container.innerHTML = '<p style="color: var(--deep-earth); font-style: italic;">No publications found in the BibTeX file.</p>';
+                return;
+            }
+            
+            container.innerHTML = entries.map(entry => {
+                const fields = entry.fields;
+                const title = fields.title || 'Untitled';
+                const authors = fields.author || 'Unknown authors';
+                const year = fields.year || '';
+                const venue = fields.journal || fields.booktitle || fields.venue || '';
+                
+                return `
+                    <div class="pub-item">
+                        <div class="pub-title">${title}</div>
+                        <div class="pub-authors">${authors}</div>
+                        <div class="pub-venue">${venue}${year ? ', ' + year : ''}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Load publications when page loads
+        window.addEventListener('DOMContentLoaded', loadPublications);
+    </script>
+</body>
+</html>
