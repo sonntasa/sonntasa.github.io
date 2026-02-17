@@ -7,11 +7,13 @@ A clean, minimal single-page CV with warm earth tones and BibTeX support.
 1. **Fork or clone this repository**
 
 2. **Add your profile picture**
+
    - Add an image file named `profile.jpg` to the repository
    - Recommended size: at least 400x400 pixels (square)
    - Supported formats: `.jpg`, `.jpeg`, `.png` (just update `src="profile.jpg"` in index.html if using a different name)
 
 3. **Edit `index.html`**
+
    - Replace "Your Name" with your actual name
    - Update the tagline and about section
    - Add your contact information (email, GitHub, Google Scholar links)
@@ -24,7 +26,6 @@ A clean, minimal single-page CV with warm earth tones and BibTeX support.
      - `@inproceedings` for conference papers
      - `@book` for books
      - `@phdthesis` or `@mastersthesis` for theses
-   
 5. **Enable GitHub Pages**
    - Go to your repository Settings
    - Navigate to "Pages" in the left sidebar
@@ -35,28 +36,49 @@ A clean, minimal single-page CV with warm earth tones and BibTeX support.
 ## Customization
 
 ### Colors
+
 The color scheme uses CSS variables defined at the top of `index.html`. You can easily customize:
+
+Original colorscheme:
 
 ```css
 :root {
-    --sand: #F5F1E8;           /* Background light tone */
-    --warm-stone: #E8DFD0;     /* Background variation */
-    --terracotta: #C17B5C;     /* Primary accent */
-    --deep-earth: #8B6F47;     /* Secondary text */
-    --charcoal: #3D3834;       /* Main text */
-    --accent-rust: #A85C3A;    /* Links and highlights */
+  --background: #ead2ac; /* sand; Background light tone */
+  --back-alt: #e6b89c; /* warm-stone; Background variation */
+  --accent-prime: #c17b5c; /* terracotta; * Primary accent */
+  --text-sec: #8b6f47; /* deep-earth; Secondary text */
+  --text-main: #3d3834; /* charcoal; * Main text */
+  --accent-sec: #a85c3a; /* accent-rust Links and highlights */
+}
+```
+
+Playful:
+
+```css
+:root {
+  --background: #f5f1e8;
+  --back-alt: #e8dfd0;
+  --accent-prime: #fe938c;
+  --text-sec: #5c3650;
+  --text-main: #2e2a24;
+  --accent-sec: #d4878a;
 }
 ```
 
 ### Fonts
+
 The CV uses:
-- **Crimson Pro** for headings (serif)
-- **IBM Plex Sans** for body text (sans-serif)
+
+- ~Crimson Pro~ for headings (serif)
+- ~IBM Plex Sans~ for body text (sans-serif)
+- Alan Sans (nice rounded font) at different weights for headings & body
 
 You can change these in the Google Fonts link and CSS `font-family` declarations.
 
 ### Sections
+
 To add or remove sections:
+
 1. Copy an existing `<section>` block
 2. Update the `id` and content
 3. Adjust the animation delay if needed
@@ -66,6 +88,7 @@ To add or remove sections:
 The CV automatically parses your `publications.bib` file and displays publications sorted by year (newest first).
 
 Supported BibTeX fields:
+
 - `title` - Publication title
 - `author` - Authors (comma-separated)
 - `year` - Publication year

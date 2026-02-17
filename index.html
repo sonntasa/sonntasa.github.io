@@ -12,12 +12,19 @@
     />
     <style>
       :root {
-        --sand: #f5f1e8;
-        --warm-stone: #e8dfd0;
-        --terracotta: #c17b5c;
-        --deep-earth: #8b6f47;
-        --charcoal: #3d3834;
-        --accent-rust: #a85c3a;
+        --background: #f5f1e8;
+        --back-alt: #e8dfd0;
+        --accent-prime: #c17b5c;
+        --text-sec: #8b6f47;
+        --text-main: #3d3834;
+        --accent-sec: #a85c3a;
+
+        /* --background: #f5f1e8; */
+        /* --back-alt: #e8dfd0; */
+        /* --accent-prime: #fe938c; */
+        /* --text-sec: #5c3650; */
+        /* --text-main: #2e2a24; */
+        /* --accent-sec: #d4878a; */
 
         --shadow-soft: 0 2px 12px rgba(61, 56, 52, 0.08);
         --shadow-medium: 0 4px 24px rgba(61, 56, 52, 0.12);
@@ -35,10 +42,10 @@
         font-weight: 400;
         background: linear-gradient(
           135deg,
-          var(--sand) 0%,
-          var(--warm-stone) 100%
+          var(--background) 0%,
+          var(--back-alt) 100%
         );
-        color: var(--charcoal);
+        color: var(--text-main);
         line-height: 1.7;
         min-height: 100vh;
       }
@@ -83,7 +90,7 @@
         object-fit: cover;
         box-shadow: var(--shadow-soft);
         flex-shrink: 0;
-        border: 3px solid var(--warm-stone);
+        border: 3px solid var(--back-alt);
       }
 
       .header-content {
@@ -111,8 +118,8 @@
         height: 4px;
         background: linear-gradient(
           90deg,
-          var(--terracotta),
-          var(--accent-rust)
+          var(--accent-prime),
+          var(--accent-sec)
         );
         border-radius: 24px 24px 0 0;
       }
@@ -124,14 +131,14 @@
         /* font-family: "Varela Round"; */
         /* font-weight: 300; */
         font-size: 3.5rem;
-        color: var(--charcoal);
+        color: var(--text-main);
         margin-bottom: 12px;
         letter-spacing: -0.02em;
       }
 
       .tagline {
         font-size: 1.1rem;
-        color: var(--deep-earth);
+        color: var(--text-sec);
         font-weight: 300;
         letter-spacing: 0.02em;
       }
@@ -142,24 +149,24 @@
         flex-wrap: wrap;
         gap: 24px;
         padding-top: 30px;
-        border-top: 1px solid var(--warm-stone);
+        border-top: 1px solid var(--back-alt);
       }
 
       .contact-item {
         display: flex;
         align-items: center;
         gap: 8px;
-        color: var(--deep-earth);
+        color: var(--text-sec);
         text-decoration: none;
         transition: all 0.3s ease;
         padding: 8px 16px;
         border-radius: 12px;
-        background: var(--sand);
+        background: var(--background);
       }
 
       .contact-item:hover {
-        background: var(--warm-stone);
-        color: var(--accent-rust);
+        background: var(--back-alt);
+        color: var(--accent-sec);
         transform: translateY(-2px);
       }
 
@@ -174,7 +181,7 @@
         gap: 20px;
         margin-top: 25px;
         padding-top: 25px;
-        border-top: 1px solid var(--warm-stone);
+        border-top: 1px solid var(--back-alt);
         align-items: center;
       }
 
@@ -246,24 +253,24 @@
         font-weight: 600;
         font-size: 2rem;
         /* font-weight: 600; */
-        color: var(--terracotta);
+        color: var(--accent-prime);
         margin-bottom: 30px;
         padding-bottom: 16px;
-        border-bottom: 2px solid var(--warm-stone);
+        border-bottom: 2px solid var(--back-alt);
         letter-spacing: -0.01em;
       }
 
       .about-text {
         font-size: 1.05rem;
         line-height: 1.8;
-        color: var(--charcoal);
+        color: var(--text-main);
       }
 
       .edu-item,
       .pub-item {
         margin-bottom: 30px;
         padding-bottom: 30px;
-        border-bottom: 1px solid var(--warm-stone);
+        border-bottom: 1px solid var(--back-alt);
       }
 
       .edu-item:last-child,
@@ -288,13 +295,13 @@
         /* font-family: "Crimson Pro", serif; */
         /* font-weight: 600; */
         font-size: 1.3rem;
-        color: var(--charcoal);
+        color: var(--text-main);
       }
 
       .year {
         font-size: 0.95rem;
-        color: var(--deep-earth);
-        background: var(--sand);
+        color: var(--text-sec);
+        background: var(--background);
         padding: 4px 14px;
         border-radius: 12px;
         font-weight: 500;
@@ -302,7 +309,7 @@
 
       .institution {
         font-size: 1.05rem;
-        color: var(--deep-earth);
+        color: var(--text-sec);
         font-weight: 400;
       }
 
@@ -313,26 +320,26 @@
         font-family: "Alan Sans";
         font-weight: 600;
         font-size: 1.15rem;
-        color: var(--charcoal);
+        color: var(--text-main);
         margin-bottom: 6px;
         line-height: 1.5;
       }
 
       .pub-authors {
         font-size: 0.95rem;
-        color: var(--deep-earth);
+        color: var(--text-sec);
         margin-bottom: 4px;
       }
 
       .pub-venue {
         font-size: 0.9rem;
-        color: var(--accent-rust);
+        color: var(--accent-sec);
         font-style: italic;
       }
 
       .loading {
         text-align: center;
-        color: var(--deep-earth);
+        color: var(--text-sec);
         padding: 20px;
         font-style: italic;
       }
@@ -385,7 +392,7 @@
 
       /* Selection styling */
       ::selection {
-        background: var(--terracotta);
+        background: var(--accent-prime);
         color: white;
       }
     </style>
@@ -570,7 +577,7 @@
         } catch (error) {
           console.error("Error loading publications:", error);
           document.getElementById("publications-list").innerHTML =
-            '<p style="color: var(--deep-earth); font-style: italic;">Publications file not found. Please add a publications.bib file to your repository.</p>';
+            '<p style="color: var(--text-sec); font-style: italic;">Publications file not found. Please add a publications.bib file to your repository.</p>';
         }
       }
 
@@ -594,7 +601,7 @@
         } catch (error) {
           console.error("Error loading presentations:", error);
           document.getElementById("presentations-list").innerHTML =
-            '<p style="color: var(--deep-earth); font-style: italic;">Presentations file not found. Please add a presentations.bib file to your repository.</p>';
+            '<p style="color: var(--text-sec); font-style: italic;">Presentations file not found. Please add a presentations.bib file to your repository.</p>';
         }
       }
 
@@ -632,7 +639,7 @@
 
         if (entries.length === 0) {
           container.innerHTML =
-            '<p style="color: var(--deep-earth); font-style: italic;">No publications found in the BibTeX file.</p>';
+            '<p style="color: var(--text-sec); font-style: italic;">No publications found in the BibTeX file.</p>';
           return;
         }
 
@@ -670,10 +677,10 @@
             // Handle DOI/URL if present
             let links = "";
             if (fields.doi) {
-              links += ` <a href="https://doi.org/${fields.doi}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[DOI]</a>`;
+              links += ` <a href="https://doi.org/${fields.doi}" target="_blank" style="color: var(--accent-sec); text-decoration: none; border-bottom: 1px solid var(--accent-sec);">[DOI]</a>`;
             }
             if (fields.url && !fields.doi) {
-              links += ` <a href="${fields.url}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[Link]</a>`;
+              links += ` <a href="${fields.url}" target="_blank" style="color: var(--accent-sec); text-decoration: none; border-bottom: 1px solid var(--accent-sec);">[Link]</a>`;
             }
 
             return `
@@ -692,7 +699,7 @@
 
         if (entries.length === 0) {
           container.innerHTML =
-            '<p style="color: var(--deep-earth); font-style: italic;">No presentations found in the BibTeX file.</p>';
+            '<p style="color: var(--text-sec); font-style: italic;">No presentations found in the BibTeX file.</p>';
           return;
         }
 
@@ -729,10 +736,10 @@
             // Handle DOI/URL
             let links = "";
             if (fields.doi) {
-              links += ` <a href="https://doi.org/${fields.doi}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[DOI]</a>`;
+              links += ` <a href="https://doi.org/${fields.doi}" target="_blank" style="color: var(--accent-sec); text-decoration: none; border-bottom: 1px solid var(--accent-sec);">[DOI]</a>`;
             }
             if (fields.url && !fields.doi) {
-              links += ` <a href="${fields.url}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[Link]</a>`;
+              links += ` <a href="${fields.url}" target="_blank" style="color: var(--accent-sec); text-decoration: none; border-bottom: 1px solid var(--accent-sec);">[Link]</a>`;
             }
 
             return `
