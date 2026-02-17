@@ -1,772 +1,811 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel Sonntag - CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap&family=Varela+Round:wght@400"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --sand: #f5f1e8;
+        --warm-stone: #e8dfd0;
+        --terracotta: #c17b5c;
+        --deep-earth: #8b6f47;
+        --charcoal: #3d3834;
+        --accent-rust: #a85c3a;
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samuel Sonntag - CV</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap"
-    rel="stylesheet" />
-  <style>
-    :root {
-      --sand: #f5f1e8;
-      --warm-stone: #e8dfd0;
-      --terracotta: #c17b5c;
-      --deep-earth: #8b6f47;
-      --charcoal: #3d3834;
-      --accent-rust: #a85c3a;
+        --shadow-soft: 0 2px 12px rgba(61, 56, 52, 0.08);
+        --shadow-medium: 0 4px 24px rgba(61, 56, 52, 0.12);
+      }
 
-      --shadow-soft: 0 2px 12px rgba(61, 56, 52, 0.08);
-      --shadow-medium: 0 4px 24px rgba(61, 56, 52, 0.12);
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: "IBM Plex Sans", sans-serif;
-      background: linear-gradient(135deg,
+      body {
+        font-family: "IBM Plex Sans", sans-serif;
+        background: linear-gradient(
+          135deg,
           var(--sand) 0%,
-          var(--warm-stone) 100%);
-      color: var(--charcoal);
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 40px;
-      animation: fadeIn 0.8s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+          var(--warm-stone) 100%
+        );
+        color: var(--charcoal);
+        line-height: 1.7;
+        min-height: 100vh;
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    header {
-      background: white;
-      padding: 50px 60px;
-      border-radius: 24px;
-      box-shadow: var(--shadow-medium);
-      margin-bottom: 40px;
-      position: relative;
-      overflow: hidden;
-      animation: slideDown 0.6s ease-out 0.2s backwards;
-      display: flex;
-      align-items: center;
-      gap: 50px;
-    }
-
-    .profile-pic {
-      width: 180px;
-      height: 180px;
-      border-radius: 20px;
-      object-fit: cover;
-      box-shadow: var(--shadow-soft);
-      flex-shrink: 0;
-      border: 3px solid var(--warm-stone);
-    }
-
-    .header-content {
-      flex: 1;
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg,
-          var(--terracotta),
-          var(--accent-rust));
-      border-radius: 24px 24px 0 0;
-    }
-
-    h1 {
-      font-family: "Crimson Pro", serif;
-      font-size: 3.5rem;
-      font-weight: 300;
-      color: var(--charcoal);
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-
-    .tagline {
-      font-size: 1.1rem;
-      color: var(--deep-earth);
-      font-weight: 300;
-      letter-spacing: 0.02em;
-    }
-
-    .contact-info {
-      margin-top: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      padding-top: 30px;
-      border-top: 1px solid var(--warm-stone);
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--deep-earth);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      padding: 8px 16px;
-      border-radius: 12px;
-      background: var(--sand);
-    }
-
-    .contact-item:hover {
-      background: var(--warm-stone);
-      color: var(--accent-rust);
-      transform: translateY(-2px);
-    }
-
-    .contact-item svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
-
-    .institution-logos {
-      display: flex;
-      gap: 20px;
-      margin-top: 25px;
-      padding-top: 25px;
-      border-top: 1px solid var(--warm-stone);
-      align-items: center;
-    }
-
-    .institution-logo {
-      display: block;
-      transition: all 0.3s ease;
-      opacity: 0.7;
-    }
-
-    .institution-logo:hover {
-      opacity: 1;
-      transform: translateY(-2px);
-    }
-
-    .institution-logo img {
-      height: 50px;
-      width: auto;
-      display: block;
-    }
-
-    section {
-      background: white;
-      padding: 45px 60px;
-      border-radius: 24px;
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 30px;
-      transition: all 0.3s ease;
-      animation: fadeInUp 0.6s ease-out backwards;
-    }
-
-    section:nth-child(2) {
-      animation-delay: 0.3s;
-    }
-
-    section:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-
-    section:nth-child(4) {
-      animation-delay: 0.5s;
-    }
-
-    section:nth-child(5) {
-      animation-delay: 0.6s;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    section:hover {
-      box-shadow: var(--shadow-medium);
-      transform: translateY(-2px);
-    }
-
-    h2 {
-      font-family: "Crimson Pro", serif;
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--terracotta);
-      margin-bottom: 30px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--warm-stone);
-      letter-spacing: -0.01em;
-    }
-
-    .about-text {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--charcoal);
-    }
-
-    .edu-item,
-    .pub-item {
-      margin-bottom: 30px;
-      padding-bottom: 30px;
-      border-bottom: 1px solid var(--warm-stone);
-    }
-
-    .edu-item:last-child,
-    .pub-item:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .edu-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 8px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .degree {
-      font-family: "Crimson Pro", serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--charcoal);
-    }
-
-    .year {
-      font-size: 0.95rem;
-      color: var(--deep-earth);
-      background: var(--sand);
-      padding: 4px 14px;
-      border-radius: 12px;
-      font-weight: 500;
-    }
-
-    .institution {
-      font-size: 1.05rem;
-      color: var(--deep-earth);
-      font-weight: 400;
-    }
-
-    .pub-title {
-      font-family: "Crimson Pro", serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--charcoal);
-      margin-bottom: 6px;
-      line-height: 1.5;
-    }
-
-    .pub-authors {
-      font-size: 0.95rem;
-      color: var(--deep-earth);
-      margin-bottom: 4px;
-    }
-
-    .pub-venue {
-      font-size: 0.9rem;
-      color: var(--accent-rust);
-      font-style: italic;
-    }
-
-    .loading {
-      text-align: center;
-      color: var(--deep-earth);
-      padding: 20px;
-      font-style: italic;
-    }
-
-    @media (max-width: 768px) {
       .container {
-        padding: 40px 24px;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 40px;
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       header {
-        flex-direction: column;
-        gap: 30px;
-        padding: 35px 35px;
-        border-radius: 18px;
+        background: white;
+        padding: 50px 60px;
+        border-radius: 24px;
+        box-shadow: var(--shadow-medium);
+        margin-bottom: 40px;
+        position: relative;
+        overflow: hidden;
+        animation: slideDown 0.6s ease-out 0.2s backwards;
+        display: flex;
+        align-items: center;
+        gap: 50px;
       }
 
       .profile-pic {
-        width: 140px;
-        height: 140px;
+        width: 180px;
+        height: 180px;
+        border-radius: 20px;
+        object-fit: cover;
+        box-shadow: var(--shadow-soft);
+        flex-shrink: 0;
+        border: 3px solid var(--warm-stone);
       }
 
-      section {
-        padding: 35px 35px;
-        border-radius: 18px;
+      .header-content {
+        flex: 1;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--terracotta),
+          var(--accent-rust)
+        );
+        border-radius: 24px 24px 0 0;
       }
 
       h1 {
-        font-size: 2.5rem;
+        /* font-family: "Crimson Pro", serif; */
+        font-family: "Varela Round";
+        font-size: 3.5rem;
+        font-weight: 300;
+        color: var(--charcoal);
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
       }
 
-      h2 {
-        font-size: 1.6rem;
+      .tagline {
+        font-size: 1.1rem;
+        color: var(--deep-earth);
+        font-weight: 300;
+        letter-spacing: 0.02em;
       }
 
       .contact-info {
-        flex-direction: column;
-        gap: 12px;
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding-top: 30px;
+        border-top: 1px solid var(--warm-stone);
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--deep-earth);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 8px 16px;
+        border-radius: 12px;
+        background: var(--sand);
+      }
+
+      .contact-item:hover {
+        background: var(--warm-stone);
+        color: var(--accent-rust);
+        transform: translateY(-2px);
+      }
+
+      .contact-item svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
+
+      .institution-logos {
+        display: flex;
+        gap: 20px;
+        margin-top: 25px;
+        padding-top: 25px;
+        border-top: 1px solid var(--warm-stone);
+        align-items: center;
+      }
+
+      .institution-logo {
+        display: block;
+        transition: all 0.3s ease;
+        opacity: 0.7;
+      }
+
+      .institution-logo:hover {
+        opacity: 1;
+        transform: translateY(-2px);
+      }
+
+      .institution-logo img {
+        height: 50px;
+        width: auto;
+        display: block;
+      }
+
+      section {
+        background: white;
+        padding: 45px 60px;
+        border-radius: 24px;
+        box-shadow: var(--shadow-soft);
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+        animation: fadeInUp 0.6s ease-out backwards;
+      }
+
+      section:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+
+      section:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      section:nth-child(4) {
+        animation-delay: 0.5s;
+      }
+
+      section:nth-child(5) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      section:hover {
+        box-shadow: var(--shadow-medium);
+        transform: translateY(-2px);
+      }
+
+      h2 {
+        /* font-family: "Crimson Pro", serif; */
+        font-family: "Varela Round";
+        /* font-family: "Crimson Pro", serif; */
+        /* font-size: 2rem; */
+        font-weight: 600;
+        color: var(--terracotta);
+        margin-bottom: 30px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid var(--warm-stone);
+        letter-spacing: -0.01em;
+      }
+
+      .about-text {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: var(--charcoal);
+      }
+
+      .edu-item,
+      .pub-item {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid var(--warm-stone);
+      }
+
+      .edu-item:last-child,
+      .pub-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
       }
 
       .edu-header {
-        flex-direction: column;
-        align-items: flex-start;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+        gap: 12px;
       }
-    }
 
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Selection styling */
-    ::selection {
-      background: var(--terracotta);
-      color: white;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <header>
-      <img src="./pics/Sonntag.jpeg" alt="Samuel Sonntag" class="profile-pic" />
-      <div class="header-content">
-        <h1>Samuel Sonntag</h1>
-        <p class="tagline">PhD Candidate, University of Tübingen</p>
-        <p class="tagline"><i>Work Group: Cognition and Language</i></p>
-        <div class="contact-info">
-          <a href="mailto:samuel.sonntag@uni-tuebingen.de" class="contact-item">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-            </svg>
-            Mail
-          </a>
-          <a href="https://github.com/sonntasa" class="contact-item" target="_blank">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
-            </svg>
-            GitHub
-          </a>
-          <a href="https://orcid.org/0009-0006-7270-7242" class="contact-item" target="_blank">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 5.378c.525 0 .947.431.947.947a.95.95 0 0 1-.947.947.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V8.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V8.416zm1.444 1.303v7.444h2.297c2.359 0 3.988-1.428 3.988-3.722 0-2.297-1.619-3.722-3.988-3.722h-2.297z" />
-            </svg>
-            ORCID
-          </a>
-        </div>
-        <!-- NEW: Institution logos -->
-        <div class="institution-logos">
-          <a href="https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/psychologie/arbeitsbereiche/kognition-und-sprache/arbeitsbereich/samuel-sonntag/"
-            target="_blank" class="institution-logo">
-            <img src="./logos/Logo_Universitaet_Tuebingen.svg" alt="University of Tübingen" />
-          </a>
-          <a href="https://www.neglab.de/samuel-sonntag/" target="_blank" class="institution-logo">
-            <img src="./logos/neglab.svg" alt="NegLaB" />
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <section id="about">
-      <h2>About</h2>
-      <p class="about-text">
-        Both my B.Sc. and M.Sc. were in Biological Psychology, investigating
-        Conflict processing using behavioral and electrophysiological
-        measures. In the scope of my PhD, I'm investigating the cognitive
-        processes underlying the processing of negation&ndash;across multiple
-        modalities. This research is paired with my undergoing training in
-        Cognitive Behavioral Psychotherapy.
-      </p>
-    </section>
-
-    <section id="education">
-      <h2>Education</h2>
-
-      <div class="edu-item">
-        <div class="edu-header">
-          <span class="degree">Ph.D. in Psychology</span>
-          <span class="year">since August, 2024</span>
-        </div>
-        <div class="institution">University of Tübingen</div>
-        <div class="institution"><i>Supervisor: Dr. Carolin Dudschig</i></div>
-      </div>
-
-      <div class="edu-item">
-        <div class="edu-header">
-          <span class="degree">Certification in Cognitive Behavioral Therapy
-          </span>
-          <span class="year">since September, 2024</span>
-        </div>
-        <div class="institution">
-          Tübinger Akademie für Verhaltenstherapie
-        </div>
-        <div class="institution"><i>TAVT</i></div>
-      </div>
-
-      <div class="edu-item">
-        <div class="edu-header">
-          <span class="degree">M.Sc. in Psychology</span>
-          <span class="year">2022 – 2024</span>
-        </div>
-        <div class="institution">University of Tübingen</div>
-      </div>
-
-      <div class="edu-item">
-        <div class="edu-header">
-          <span class="degree">B.Sc. in Psychology</span>
-          <span class="year">2018 – 2022</span>
-        </div>
-        <div class="institution">University of Tübingen</div>
-      </div>
-    </section>
-
-    <section id="publications">
-      <h2>Publications</h2>
-      <div id="publications-list">
-        <div class="loading">Loading publications...</div>
-      </div>
-    </section>
-
-    <section id="presentations">
-      <h2>Conference Contributions</h2>
-      <div id="presentations-list">
-        <div class="loading">Loading presentations...</div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p class="about-text">
-        Feel free to reach out via
-        <a href="mailto:samuel.sonntag@uni-tuebingen.de"> email </a>
-        or connect with me on the platforms listed above.
-      </p>
-    </section>
-  </div>
-
-  <!-- BibTeX Parser -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bibtex-parse@1.0.0/index.js"></script>
-
-  <script>
-    // Load and parse BibTeX file
-    async function loadPublications() {
-      try {
-        const response = await fetch("./lib/publications.bib");
-        const bibtext = await response.text();
-
-        // Parse BibTeX
-        const entries = parseBibTeX(bibtext);
-
-        // Sort by year (descending)
-        entries.sort((a, b) => {
-          const yearA = parseInt(a.fields.year) || 0;
-          const yearB = parseInt(b.fields.year) || 0;
-          return yearB - yearA;
-        });
-
-        // Display publications
-        displayPublications(entries);
-      } catch (error) {
-        console.error("Error loading publications:", error);
-        document.getElementById("publications-list").innerHTML =
-          '<p style="color: var(--deep-earth); font-style: italic;">Publications file not found. Please add a publications.bib file to your repository.</p>';
+      .degree {
+        font-family: "Crimson Pro", serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--charcoal);
       }
-    }
 
-    async function loadPresentations() {
-      try {
-        const response = await fetch("./lib/presentations.bib");
-        const bibtext = await response.text();
-
-        // Parse BibTeX
-        const entries = parseBibTeX(bibtext);
-
-        // Sort by year (descending)
-        entries.sort((a, b) => {
-          const yearA = parseInt(a.fields.year) || 0;
-          const yearB = parseInt(b.fields.year) || 0;
-          return yearB - yearA;
-        });
-
-        // Display presentations
-        displayPresentations(entries);
-      } catch (error) {
-        console.error("Error loading presentations:", error);
-        document.getElementById("presentations-list").innerHTML =
-          '<p style="color: var(--deep-earth); font-style: italic;">Presentations file not found. Please add a presentations.bib file to your repository.</p>';
+      .year {
+        font-size: 0.95rem;
+        color: var(--deep-earth);
+        background: var(--sand);
+        padding: 4px 14px;
+        border-radius: 12px;
+        font-weight: 500;
       }
-    }
 
-    function parseBibTeX(bibtext) {
-      // BibLaTeX parser - handles both BibTeX and BibLaTeX formats
-      const entries = [];
-      const entryRegex = /@(\w+)\{([^,]+),\s*([\s\S]+?)\n\}/g;
-      let match;
+      .institution {
+        font-size: 1.05rem;
+        color: var(--deep-earth);
+        font-weight: 400;
+      }
 
-      while ((match = entryRegex.exec(bibtext)) !== null) {
-        const type = match[1];
-        const key = match[2];
-        const fieldsText = match[3];
+      .pub-title {
+        /* font-family: "Crimson Pro", serif; */
+        font-family: "Varela Round";
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--charcoal);
+        margin-bottom: 6px;
+        line-height: 1.5;
+      }
 
-        const fields = {};
-        // Updated regex to handle both curly braces and quotes, and multiline values
-        const fieldRegex =
-          /(\w+)\s*=\s*\{([^}]*(?:\{[^}]*\}[^}]*)*)\}|(\w+)\s*=\s*"([^"]*)"/g;
-        let fieldMatch;
+      .pub-authors {
+        font-size: 0.95rem;
+        color: var(--deep-earth);
+        margin-bottom: 4px;
+      }
 
-        while ((fieldMatch = fieldRegex.exec(fieldsText)) !== null) {
-          const fieldName = fieldMatch[1] || fieldMatch[3];
-          const fieldValue = fieldMatch[2] || fieldMatch[4];
-          fields[fieldName.toLowerCase()] = fieldValue;
+      .pub-venue {
+        font-size: 0.9rem;
+        color: var(--accent-rust);
+        font-style: italic;
+      }
+
+      .loading {
+        text-align: center;
+        color: var(--deep-earth);
+        padding: 20px;
+        font-style: italic;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 40px 24px;
         }
 
-        entries.push({type, key, fields});
+        header {
+          flex-direction: column;
+          gap: 30px;
+          padding: 35px 35px;
+          border-radius: 18px;
+        }
+
+        .profile-pic {
+          width: 140px;
+          height: 140px;
+        }
+
+        section {
+          padding: 35px 35px;
+          border-radius: 18px;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        .contact-info {
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .edu-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
       }
 
-      return entries;
-    }
-
-    function displayPublications(entries) {
-      const container = document.getElementById("publications-list");
-
-      if (entries.length === 0) {
-        container.innerHTML =
-          '<p style="color: var(--deep-earth); font-style: italic;">No publications found in the BibTeX file.</p>';
-        return;
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
       }
 
-      container.innerHTML = entries
-        .map((entry) => {
-          const fields = entry.fields;
-          const title = fields.title || fields.shorttitle || "Untitled";
+      /* Selection styling */
+      ::selection {
+        background: var(--terracotta);
+        color: white;
+      }
+    </style>
+  </head>
 
-          // Handle authors - BibLaTeX uses 'author', 'editor', 'editora'
-          let authors =
-            fields.author ||
-            fields.editor ||
-            fields.editora ||
-            "Unknown authors";
+  <body>
+    <div class="container">
+      <header>
+        <img
+          src="./pics/Sonntag.jpeg"
+          alt="Samuel Sonntag"
+          class="profile-pic"
+        />
+        <div class="header-content">
+          <h1>Samuel Sonntag</h1>
+          <p class="tagline">PhD Candidate, University of Tübingen</p>
+          <p class="tagline"><i>Work Group: Cognition and Language</i></p>
+          <div class="contact-info">
+            <a
+              href="mailto:samuel.sonntag@uni-tuebingen.de"
+              class="contact-item"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                />
+              </svg>
+              Mail
+            </a>
+            <a
+              href="https://github.com/sonntasa"
+              class="contact-item"
+              target="_blank"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"
+                />
+              </svg>
+              GitHub
+            </a>
+            <a
+              href="https://orcid.org/0009-0006-7270-7242"
+              class="contact-item"
+              target="_blank"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 5.378c.525 0 .947.431.947.947a.95.95 0 0 1-.947.947.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V8.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V8.416zm1.444 1.303v7.444h2.297c2.359 0 3.988-1.428 3.988-3.722 0-2.297-1.619-3.722-3.988-3.722h-2.297z"
+                />
+              </svg>
+              ORCID
+            </a>
+          </div>
+          <!-- NEW: Institution logos -->
+          <div class="institution-logos">
+            <a
+              href="https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/psychologie/arbeitsbereiche/kognition-und-sprache/arbeitsbereich/samuel-sonntag/"
+              target="_blank"
+              class="institution-logo"
+            >
+              <img
+                src="./logos/Logo_Universitaet_Tuebingen.svg"
+                alt="University of Tübingen"
+              />
+            </a>
+            <a
+              href="https://www.neglab.de/samuel-sonntag/"
+              target="_blank"
+              class="institution-logo"
+            >
+              <img src="./logos/neglab.svg" alt="NegLaB" />
+            </a>
+          </div>
+        </div>
+      </header>
 
-          // Format authors in APA style and highlight your name
-          authors = formatAuthorsAPA(authors, "Sonntag, Samuel"); // Change this to your name
+      <section id="about">
+        <h2>About</h2>
+        <p class="about-text">
+          Both my B.Sc. and M.Sc. were in Biological Psychology, investigating
+          Conflict processing using behavioral and electrophysiological
+          measures. In the scope of my PhD, I'm investigating the cognitive
+          processes underlying the processing of negation&ndash;across multiple
+          modalities. This research is paired with my undergoing training in
+          Cognitive Behavioral Psychotherapy.
+        </p>
+      </section>
 
-          // Get year from either 'year' or 'date' field (BibLaTeX uses 'date')
-          let year = fields.year;
-          if (!year && fields.date) {
-            // Extract year from date format (e.g., "2025-05-28" -> "2025")
-            year = fields.date.split("-")[0];
+      <section id="education">
+        <h2>Education</h2>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <span class="degree">Ph.D. in Psychology</span>
+            <span class="year">since August, 2024</span>
+          </div>
+          <div class="institution">University of Tübingen</div>
+          <div class="institution"><i>Supervisor: Dr. Carolin Dudschig</i></div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <span class="degree"
+              >Certification in Cognitive Behavioral Therapy
+            </span>
+            <span class="year">since September, 2024</span>
+          </div>
+          <div class="institution">
+            Tübinger Akademie für Verhaltenstherapie
+          </div>
+          <div class="institution"><i>TAVT</i></div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <span class="degree">M.Sc. in Psychology</span>
+            <span class="year">2022 – 2024</span>
+          </div>
+          <div class="institution">University of Tübingen</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <span class="degree">B.Sc. in Psychology</span>
+            <span class="year">2018 – 2022</span>
+          </div>
+          <div class="institution">University of Tübingen</div>
+        </div>
+      </section>
+
+      <section id="publications">
+        <h2>Publications</h2>
+        <div id="publications-list">
+          <div class="loading">Loading publications...</div>
+        </div>
+      </section>
+
+      <section id="presentations">
+        <h2>Conference Contributions</h2>
+        <div id="presentations-list">
+          <div class="loading">Loading presentations...</div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p class="about-text">
+          Feel free to reach out via
+          <a href="mailto:samuel.sonntag@uni-tuebingen.de"> email </a>
+          or connect with me on the platforms listed above.
+        </p>
+      </section>
+    </div>
+
+    <!-- BibTeX Parser -->
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bibtex-parse@1.0.0/index.js"></script>
+
+    <script>
+      // Load and parse BibTeX file
+      async function loadPublications() {
+        try {
+          const response = await fetch("./lib/publications.bib");
+          const bibtext = await response.text();
+
+          // Parse BibTeX
+          const entries = parseBibTeX(bibtext);
+
+          // Sort by year (descending)
+          entries.sort((a, b) => {
+            const yearA = parseInt(a.fields.year) || 0;
+            const yearB = parseInt(b.fields.year) || 0;
+            return yearB - yearA;
+          });
+
+          // Display publications
+          displayPublications(entries);
+        } catch (error) {
+          console.error("Error loading publications:", error);
+          document.getElementById("publications-list").innerHTML =
+            '<p style="color: var(--deep-earth); font-style: italic;">Publications file not found. Please add a publications.bib file to your repository.</p>';
+        }
+      }
+
+      async function loadPresentations() {
+        try {
+          const response = await fetch("./lib/presentations.bib");
+          const bibtext = await response.text();
+
+          // Parse BibTeX
+          const entries = parseBibTeX(bibtext);
+
+          // Sort by year (descending)
+          entries.sort((a, b) => {
+            const yearA = parseInt(a.fields.year) || 0;
+            const yearB = parseInt(b.fields.year) || 0;
+            return yearB - yearA;
+          });
+
+          // Display presentations
+          displayPresentations(entries);
+        } catch (error) {
+          console.error("Error loading presentations:", error);
+          document.getElementById("presentations-list").innerHTML =
+            '<p style="color: var(--deep-earth); font-style: italic;">Presentations file not found. Please add a presentations.bib file to your repository.</p>';
+        }
+      }
+
+      function parseBibTeX(bibtext) {
+        // BibLaTeX parser - handles both BibTeX and BibLaTeX formats
+        const entries = [];
+        const entryRegex = /@(\w+)\{([^,]+),\s*([\s\S]+?)\n\}/g;
+        let match;
+
+        while ((match = entryRegex.exec(bibtext)) !== null) {
+          const type = match[1];
+          const key = match[2];
+          const fieldsText = match[3];
+
+          const fields = {};
+          // Updated regex to handle both curly braces and quotes, and multiline values
+          const fieldRegex =
+            /(\w+)\s*=\s*\{([^}]*(?:\{[^}]*\}[^}]*)*)\}|(\w+)\s*=\s*"([^"]*)"/g;
+          let fieldMatch;
+
+          while ((fieldMatch = fieldRegex.exec(fieldsText)) !== null) {
+            const fieldName = fieldMatch[1] || fieldMatch[3];
+            const fieldValue = fieldMatch[2] || fieldMatch[4];
+            fields[fieldName.toLowerCase()] = fieldValue;
           }
 
-          // Handle venue - multiple possible fields
-          const venue =
-            fields.journal ||
-            fields.booktitle ||
-            fields.venue ||
-            fields.publisher ||
-            fields.howpublished ||
-            "";
+          entries.push({ type, key, fields });
+        }
 
-          // Handle DOI/URL if present
-          let links = "";
-          if (fields.doi) {
-            links += ` <a href="https://doi.org/${fields.doi}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[DOI]</a>`;
-          }
-          if (fields.url && !fields.doi) {
-            links += ` <a href="${fields.url}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[Link]</a>`;
-          }
+        return entries;
+      }
 
-          return `
+      function displayPublications(entries) {
+        const container = document.getElementById("publications-list");
+
+        if (entries.length === 0) {
+          container.innerHTML =
+            '<p style="color: var(--deep-earth); font-style: italic;">No publications found in the BibTeX file.</p>';
+          return;
+        }
+
+        container.innerHTML = entries
+          .map((entry) => {
+            const fields = entry.fields;
+            const title = fields.title || fields.shorttitle || "Untitled";
+
+            // Handle authors - BibLaTeX uses 'author', 'editor', 'editora'
+            let authors =
+              fields.author ||
+              fields.editor ||
+              fields.editora ||
+              "Unknown authors";
+
+            // Format authors in APA style and highlight your name
+            authors = formatAuthorsAPA(authors, "Sonntag, Samuel"); // Change this to your name
+
+            // Get year from either 'year' or 'date' field (BibLaTeX uses 'date')
+            let year = fields.year;
+            if (!year && fields.date) {
+              // Extract year from date format (e.g., "2025-05-28" -> "2025")
+              year = fields.date.split("-")[0];
+            }
+
+            // Handle venue - multiple possible fields
+            const venue =
+              fields.journal ||
+              fields.booktitle ||
+              fields.venue ||
+              fields.publisher ||
+              fields.howpublished ||
+              "";
+
+            // Handle DOI/URL if present
+            let links = "";
+            if (fields.doi) {
+              links += ` <a href="https://doi.org/${fields.doi}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[DOI]</a>`;
+            }
+            if (fields.url && !fields.doi) {
+              links += ` <a href="${fields.url}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[Link]</a>`;
+            }
+
+            return `
             <div class="pub-item">
                 <div class="pub-title">${title}</div>
                 <div class="pub-authors">${authors}</div>
                 <div class="pub-venue">${venue}${year ? ", " + year : ""}${links}</div>
             </div>
         `;
-        })
-        .join("");
-    }
-
-    function displayPresentations(entries) {
-      const container = document.getElementById("presentations-list");
-
-      if (entries.length === 0) {
-        container.innerHTML =
-          '<p style="color: var(--deep-earth); font-style: italic;">No presentations found in the BibTeX file.</p>';
-        return;
+          })
+          .join("");
       }
 
-      container.innerHTML = entries
-        .map((entry) => {
-          const fields = entry.fields;
-          const title = fields.title || fields.shorttitle || "Untitled";
+      function displayPresentations(entries) {
+        const container = document.getElementById("presentations-list");
 
-          // Handle authors
-          let authors =
-            fields.author ||
-            fields.editor ||
-            fields.editora ||
-            "Unknown authors";
+        if (entries.length === 0) {
+          container.innerHTML =
+            '<p style="color: var(--deep-earth); font-style: italic;">No presentations found in the BibTeX file.</p>';
+          return;
+        }
 
-          // Format authors in APA style and highlight your name
-          authors = formatAuthorsAPA(authors, "Sonntag, Samuel"); // Change this to your name
+        container.innerHTML = entries
+          .map((entry) => {
+            const fields = entry.fields;
+            const title = fields.title || fields.shorttitle || "Untitled";
 
-          // Get year from either 'year' or 'date' field
-          let year = fields.year;
-          if (!year && fields.date) {
-            year = fields.date.split("-")[0];
-          }
+            // Handle authors
+            let authors =
+              fields.author ||
+              fields.editor ||
+              fields.editora ||
+              "Unknown authors";
 
-          // Handle venue
-          const venue =
-            fields.howpublished ||
-            fields.booktitle ||
-            fields.venue ||
-            fields.publisher ||
-            "";
-          const note = fields.note || "";
+            // Format authors in APA style and highlight your name
+            authors = formatAuthorsAPA(authors, "Sonntag, Samuel"); // Change this to your name
 
-          // Handle DOI/URL
-          let links = "";
-          if (fields.doi) {
-            links += ` <a href="https://doi.org/${fields.doi}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[DOI]</a>`;
-          }
-          if (fields.url && !fields.doi) {
-            links += ` <a href="${fields.url}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[Link]</a>`;
-          }
+            // Get year from either 'year' or 'date' field
+            let year = fields.year;
+            if (!year && fields.date) {
+              year = fields.date.split("-")[0];
+            }
 
-          return `
+            // Handle venue
+            const venue =
+              fields.howpublished ||
+              fields.booktitle ||
+              fields.venue ||
+              fields.publisher ||
+              "";
+            const note = fields.note || "";
+
+            // Handle DOI/URL
+            let links = "";
+            if (fields.doi) {
+              links += ` <a href="https://doi.org/${fields.doi}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[DOI]</a>`;
+            }
+            if (fields.url && !fields.doi) {
+              links += ` <a href="${fields.url}" target="_blank" style="color: var(--accent-rust); text-decoration: none; border-bottom: 1px solid var(--accent-rust);">[Link]</a>`;
+            }
+
+            return `
             <div class="pub-item">
                 <div class="pub-title">${title}</div>
                 <div class="pub-authors">${authors}</div>
                 <div class="pub-venue">${venue}${note ? ", " + note : ""}${year ? ", " + year : ""}${links}</div>
             </div>
         `;
-        })
-        .join("");
-    }
+          })
+          .join("");
+      }
 
-    // NEW FUNCTION - Add this after parseBibTeX()
-    function formatAuthorsAPA(authorString, highlightName) {
-      // Split authors by 'and'
-      let authors = authorString.split(" and ").map((a) => a.trim());
+      // NEW FUNCTION - Add this after parseBibTeX()
+      function formatAuthorsAPA(authorString, highlightName) {
+        // Split authors by 'and'
+        let authors = authorString.split(" and ").map((a) => a.trim());
 
-      // Format each author
-      authors = authors.map((author) => {
-        // Handle "Last, First" format (already correct)
-        if (author.includes(",")) {
-          let parts = author.split(",").map((p) => p.trim());
-          let lastName = parts[0];
-          let firstName = parts[1] || "";
+        // Format each author
+        authors = authors.map((author) => {
+          // Handle "Last, First" format (already correct)
+          if (author.includes(",")) {
+            let parts = author.split(",").map((p) => p.trim());
+            let lastName = parts[0];
+            let firstName = parts[1] || "";
 
-          // Get initials from first name
-          let initials = firstName
-            .split(/\s+/)
-            .map((name) => {
-              return name.charAt(0).toUpperCase() + ".";
-            })
-            .join(" ");
+            // Get initials from first name
+            let initials = firstName
+              .split(/\s+/)
+              .map((name) => {
+                return name.charAt(0).toUpperCase() + ".";
+              })
+              .join(" ");
 
-          return `${lastName}, ${initials}`;
+            return `${lastName}, ${initials}`;
+          }
+          // Handle "First Last" format - convert to "Last, F."
+          else {
+            let parts = author.split(/\s+/);
+            let lastName = parts[parts.length - 1];
+            let firstNames = parts.slice(0, -1);
+
+            let initials = firstNames
+              .map((name) => {
+                return name.charAt(0).toUpperCase() + ".";
+              })
+              .join(" ");
+
+            return `${lastName}, ${initials}`;
+          }
+        });
+
+        // Join with commas and ampersand for last author (APA style)
+        let formattedAuthors;
+        if (authors.length === 1) {
+          formattedAuthors = authors[0];
+        } else if (authors.length === 2) {
+          formattedAuthors = authors.join(" & ");
+        } else {
+          formattedAuthors =
+            authors.slice(0, -1).join(", ") +
+            ", & " +
+            authors[authors.length - 1];
         }
-        // Handle "First Last" format - convert to "Last, F."
-        else {
-          let parts = author.split(/\s+/);
-          let lastName = parts[parts.length - 1];
-          let firstNames = parts.slice(0, -1);
 
-          let initials = firstNames
-            .map((name) => {
-              return name.charAt(0).toUpperCase() + ".";
-            })
-            .join(" ");
-
-          return `${lastName}, ${initials}`;
+        // Highlight your name
+        if (highlightName) {
+          // Try to match by last name
+          const lastNameMatch = highlightName.split(",")[0].trim();
+          formattedAuthors = formattedAuthors.replace(
+            new RegExp(`(${lastNameMatch},\\s*[A-Z]\\.?)`, "g"),
+            "<strong>$1</strong>",
+          );
         }
+
+        return formattedAuthors;
+      }
+
+      // Load both when page loads
+      window.addEventListener("DOMContentLoaded", () => {
+        loadPublications();
+        loadPresentations();
       });
-
-      // Join with commas and ampersand for last author (APA style)
-      let formattedAuthors;
-      if (authors.length === 1) {
-        formattedAuthors = authors[0];
-      } else if (authors.length === 2) {
-        formattedAuthors = authors.join(" & ");
-      } else {
-        formattedAuthors =
-          authors.slice(0, -1).join(", ") +
-          ", & " +
-          authors[authors.length - 1];
-      }
-
-      // Highlight your name
-      if (highlightName) {
-        // Try to match by last name
-        const lastNameMatch = highlightName.split(",")[0].trim();
-        formattedAuthors = formattedAuthors.replace(
-          new RegExp(`(${lastNameMatch},\\s*[A-Z]\\.?)`, "g"),
-          "<strong>$1</strong>",
-        );
-      }
-
-      return formattedAuthors;
-    }
-
-    // Load both when page loads
-    window.addEventListener("DOMContentLoaded", () => {
-      loadPublications();
-      loadPresentations();
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
