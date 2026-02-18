@@ -416,7 +416,6 @@
 
       #theme-toggle {
         position: fixed;
-        /* bottom: 32px; */
         top: 32px;
         right: 32px;
         width: 48px;
@@ -587,11 +586,12 @@
           or connect with me on the platforms listed above.
         </p>
       </section>
-
-      <button id="theme-toggle" aria-label="Toggle dark mode">
-        <span id="theme-icon">🌙</span>
-      </button>
     </div>
+
+    <!-- Moved outside container to mitigate the shifting -->
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+      <span id="theme-icon">🌙</span>
+    </button>
 
     <!-- BibTeX Parser -->
     <script
@@ -624,6 +624,7 @@
           document.getElementById("publications-list").innerHTML =
             '<p style="color: var(--text-sec); font-style: italic;">Publications file not found. Please add a publications.bib file to your repository.</p>';
         }
+      }
 
       async function loadPresentations() {
         try {
@@ -647,6 +648,7 @@
           document.getElementById("presentations-list").innerHTML =
             '<p style="color: var(--text-sec); font-style: italic;">Presentations file not found. Please add a presentations.bib file to your repository.</p>';
         }
+      }
 
       function parseBibTeX(bibtext) {
         // BibLaTeX parser - handles both BibTeX and BibLaTeX formats
