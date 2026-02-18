@@ -1,5 +1,7 @@
 # Personal CV Website
 
+https://sonntasa.github.io
+
 A clean, minimal single-page CV with warm earth tones and BibTeX support.
 
 A blank version of this CV is available in the "template" branch of this repo.
