@@ -12,22 +12,37 @@
     />
     <style>
       :root {
-        --background: #f5f1e8;
-        --back-alt: #e8dfd0;
-        --accent-prime: #c17b5c;
-        --text-sec: #8b6f47;
-        --text-main: #3d3834;
-        --accent-sec: #a85c3a;
-
+        /* Sand-Standard */
         /* --background: #f5f1e8; */
         /* --back-alt: #e8dfd0; */
-        /* --accent-prime: #fe938c; */
-        /* --text-sec: #5c3650; */
-        /* --text-main: #2e2a24; */
-        /* --accent-sec: #d4878a; */
+        /* --accent-prime: #c17b5c; */
+        /* --text-sec: #8b6f47; */
+        /* --text-main: #3d3834; */
+        /* --accent-sec: #a85c3a; */
 
+        /* Playful */
+        --background: #f8f6f6;
+        --back-alt: #ede8e8;
+        --accent-prime: #d63a65;
+        --text-sec: #6b4f4f;
+        --text-main: #1a1515;
+        --accent-sec: #3b82f6;
+
+        --surface: #ffffff;
         --shadow-soft: 0 2px 12px rgba(61, 56, 52, 0.08);
         --shadow-medium: 0 4px 24px rgba(61, 56, 52, 0.12);
+      }
+      [data-theme="dark"] {
+        --background: #1a1520;
+        --back-alt: #231d2c;
+        --accent-prime: #f06090;
+        --text-sec: #a89ab8;
+        --text-main: #ede8f5;
+        --accent-sec: #60a5fa;
+
+        --surface: #2a2435;
+        --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.3);
+        --shadow-medium: 0 4px 24px rgba(0, 0, 0, 0.5);
       }
 
       * {
@@ -48,6 +63,9 @@
         color: var(--text-main);
         line-height: 1.7;
         min-height: 100vh;
+        transition:
+          background 0.3s ease,
+          color 0.3s ease;
       }
 
       .container {
@@ -70,7 +88,7 @@
       }
 
       header {
-        background: white;
+        background: var(--surface);
         padding: 50px 60px;
         border-radius: 24px;
         box-shadow: var(--shadow-medium);
@@ -203,7 +221,7 @@
       }
 
       section {
-        background: white;
+        background: var(--surface);
         padding: 45px 60px;
         border-radius: 24px;
         box-shadow: var(--shadow-soft);
@@ -395,6 +413,28 @@
         background: var(--accent-prime);
         color: white;
       }
+
+      #theme-toggle {
+        position: fixed;
+        /* bottom: 32px; */
+        top: 32px;
+        right: 32px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: none;
+        background: var(--back-alt);
+        box-shadow: var(--shadow-medium);
+        cursor: pointer;
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      #theme-toggle:hover {
+        transform: scale(1.1) rotate(15deg);
+        background: var(--accent-prime);
+      }
     </style>
   </head>
 
@@ -474,11 +514,12 @@
         <h2>About</h2>
         <p class="about-text">
           Both my B.Sc. and M.Sc. were in Biological Psychology, investigating
-          Conflict processing using behavioral and electrophysiological
-          measures. In the scope of my PhD, I'm investigating the cognitive
-          processes underlying the processing of negation&ndash;across multiple
-          modalities. This research is paired with my undergoing training in
-          Cognitive Behavioral Psychotherapy.
+          standard conflict processing paradigms using behavioral and
+          electrophysiological measures, as well as modeling. In the scope of my
+          PhD, I'm investigating the cognitive processes underlying the
+          processing of negation&ndash;across multiple modalities. This research
+          is paired with my undergoing training in Cognitive Behavioral
+          Psychotherapy (CBT).
         </p>
       </section>
 
@@ -546,6 +587,10 @@
           or connect with me on the platforms listed above.
         </p>
       </section>
+
+      <button id="theme-toggle" aria-label="Toggle dark mode">
+        <span id="theme-icon">🌙</span>
+      </button>
     </div>
 
     <!-- BibTeX Parser -->
@@ -579,7 +624,9 @@
           document.getElementById("publications-list").innerHTML =
             '<p style="color: var(--text-sec); font-style: italic;">Publications file not found. Please add a publications.bib file to your repository.</p>';
         }
-      }
+      }<button id="theme-toggle" aria-label="Toggle dark mode">  <!-- ADD HERE -->
+        <span id="theme-icon">🌙</span>
+      </button>
 
       async function loadPresentations() {
         try {
@@ -603,7 +650,9 @@
           document.getElementById("presentations-list").innerHTML =
             '<p style="color: var(--text-sec); font-style: italic;">Presentations file not found. Please add a presentations.bib file to your repository.</p>';
         }
-      }
+      }<button id="theme-toggle" aria-label="Toggle dark mode">  <!-- ADD HERE -->
+        <span id="theme-icon">🌙</span>
+      </button>
 
       function parseBibTeX(bibtext) {
         // BibLaTeX parser - handles both BibTeX and BibLaTeX formats
@@ -822,6 +871,25 @@
       window.addEventListener("DOMContentLoaded", () => {
         loadPublications();
         loadPresentations();
+      });
+
+      const toggle = document.getElementById("theme-toggle");
+      const icon = document.getElementById("theme-icon");
+
+      const saved =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      document.documentElement.setAttribute("data-theme", saved);
+      icon.textContent = saved === "dark" ? "☀️" : "🌙";
+
+      toggle.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        icon.textContent = next === "dark" ? "☀️" : "🌙";
       });
     </script>
   </body>

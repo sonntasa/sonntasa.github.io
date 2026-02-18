@@ -55,17 +55,30 @@ Original colorscheme:
 }
 ```
 
-Playful:
+UPDATE: The original colors have gone, Dark mode is here now.
+
+#### Playful:
+
+Light:
 
 ```css
-:root {
-  --background: #f5f1e8;
-  --back-alt: #e8dfd0;
-  --accent-prime: #fe938c;
-  --text-sec: #5c3650;
-  --text-main: #2e2a24;
-  --accent-sec: #d4878a;
-}
+--background: #f8f6f6;
+--back-alt: #ede8e8;
+--accent-prime: #d63a65;
+--text-sec: #6b4f4f;
+--text-main: #1a1515;
+--accent-sec: #3b82f6;
+```
+
+Dark:
+
+```css
+--background: #1a1520;
+--back-alt: #231d2c;
+--accent-prime: #f06090;
+--text-sec: #a89ab8;
+--text-main: #ede8f5;
+--accent-sec: #60a5fa;
 ```
 
 ### Fonts
