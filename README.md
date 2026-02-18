@@ -2,6 +2,9 @@
 
 A clean, minimal single-page CV with warm earth tones and BibTeX support.
 
+A blank version of this CV is available in the "template" branch of this repo.
+Be aware that that version might not be up-to-date in every functionality the main branch holds.
+
 ## Setup
 
 1. **Fork or clone this repository**
@@ -99,3 +102,4 @@ Supported BibTeX fields:
 ## License
 
 Feel free to use this template for your own CV!
+This template was generated with the help of Claude.
