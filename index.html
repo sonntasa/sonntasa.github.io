@@ -624,9 +624,6 @@
           document.getElementById("publications-list").innerHTML =
             '<p style="color: var(--text-sec); font-style: italic;">Publications file not found. Please add a publications.bib file to your repository.</p>';
         }
-      }<button id="theme-toggle" aria-label="Toggle dark mode">  <!-- ADD HERE -->
-        <span id="theme-icon">🌙</span>
-      </button>
 
       async function loadPresentations() {
         try {
@@ -650,9 +647,6 @@
           document.getElementById("presentations-list").innerHTML =
             '<p style="color: var(--text-sec); font-style: italic;">Presentations file not found. Please add a presentations.bib file to your repository.</p>';
         }
-      }<button id="theme-toggle" aria-label="Toggle dark mode">  <!-- ADD HERE -->
-        <span id="theme-icon">🌙</span>
-      </button>
 
       function parseBibTeX(bibtext) {
         // BibLaTeX parser - handles both BibTeX and BibLaTeX formats
