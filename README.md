@@ -1,6 +1,6 @@
 # Personal CV Website
 
-https://sonntasa.github.io
+~https://sonntasa.github.io~ -> samuel-sonntag.de
 
 A clean, minimal single-page CV with warm earth tones and BibTeX support.
 
