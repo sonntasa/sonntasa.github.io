@@ -11,6 +11,16 @@
       rel="stylesheet"
     />
     <style>
+      /* Only invert NegLaB */
+      /* [data-theme="dark"] .institution-logo:last-child img { */
+      /*   filter: brightness(0) invert(1); */
+      /* } */
+
+      /* invert both logos in dark mode */
+      [data-theme="dark"] .institution-logo img {
+        filter: brightness(0) invert(1);
+      }
+
       :root {
         /* Sand-Standard */
         /* --background: #f5f1e8; */
