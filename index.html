@@ -27,11 +27,11 @@
         --text-sec: #6b4f4f;
         --text-main: #1a1515;
         --accent-sec: #3b82f6;
-
         --surface: #ffffff;
         --shadow-soft: 0 2px 12px rgba(61, 56, 52, 0.08);
         --shadow-medium: 0 4px 24px rgba(61, 56, 52, 0.12);
       }
+
       [data-theme="dark"] {
         --background: #1a1520;
         --back-alt: #231d2c;
@@ -39,7 +39,6 @@
         --text-sec: #a89ab8;
         --text-main: #ede8f5;
         --accent-sec: #60a5fa;
-
         --surface: #2a2435;
         --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.3);
         --shadow-medium: 0 4px 24px rgba(0, 0, 0, 0.5);
@@ -60,6 +59,7 @@
           var(--background) 0%,
           var(--back-alt) 100%
         );
+        background-attachment: fixed;
         color: var(--text-main);
         line-height: 1.7;
         min-height: 100vh;
@@ -226,41 +226,31 @@
         border-radius: 24px;
         box-shadow: var(--shadow-soft);
         margin-bottom: 30px;
-        transition: all 0.3s ease;
-        animation: fadeInUp 0.6s ease-out backwards;
-      }
-
-      section:nth-child(2) {
-        animation-delay: 0.3s;
-      }
-
-      section:nth-child(3) {
-        animation-delay: 0.4s;
-      }
-
-      section:nth-child(4) {
-        animation-delay: 0.5s;
-      }
-
-      section:nth-child(5) {
-        animation-delay: 0.6s;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        transition: all 0.5s ease-out;
       }
 
       section:hover {
         box-shadow: var(--shadow-medium);
-        transform: translateY(-2px);
+      }
+
+      /* Scroll-triggered fade-in animation with scaling */
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        transition:
+          opacity 0.6s ease-out,
+          transform 0.5s ease-out;
+      }
+
+      .fade-in-section.visible {
+        opacity: 1;
+        transform: translateY(0) scale(0.95);
+      }
+
+      /* Active section scaling */
+      section.active-section {
+        transform: translateY(0) scale(1) !important;
+        box-shadow: var(--shadow-medium);
       }
 
       h2 {
@@ -403,12 +393,10 @@
         }
       }
 
-      /* Smooth scrolling */
       html {
         scroll-behavior: smooth;
       }
 
-      /* Selection styling */
       ::selection {
         background: var(--accent-prime);
         color: white;
@@ -635,7 +623,7 @@
         } catch (error) {
           console.error("Error loading publications:", error);
           document.getElementById("publications-list").innerHTML =
-            '<p style="color: var(--text-sec); font-style: italic;">Publications file not found. Please add a publications.bib file to your repository.</p>';
+            '<p style="color: var(--text-sec); font-style: italic;">Publications file not found.</p>';
         }
       }
 
@@ -697,7 +685,7 @@
 
         if (entries.length === 0) {
           container.innerHTML =
-            '<p style="color: var(--text-sec); font-style: italic;">No publications found in the BibTeX file.</p>';
+            '<p style="color: var(--text-sec); font-style: italic;">No publications found.</p>';
           return;
         }
 
@@ -757,7 +745,7 @@
 
         if (entries.length === 0) {
           container.innerHTML =
-            '<p style="color: var(--text-sec); font-style: italic;">No presentations found in the BibTeX file.</p>';
+            '<p style="color: var(--text-sec); font-style: italic;">No presentations found.</p>';
           return;
         }
 
@@ -833,9 +821,7 @@
               .join(" ");
 
             return `${lastName}, ${initials}`;
-          }
-          // Handle "First Last" format - convert to "Last, F."
-          else {
+          } else {
             let parts = author.split(/\s+/);
             let lastName = parts[parts.length - 1];
             let firstNames = parts.slice(0, -1);
@@ -899,6 +885,50 @@
         document.documentElement.setAttribute("data-theme", next);
         localStorage.setItem("theme", next);
         icon.textContent = next === "dark" ? "☀️" : "🌙";
+      });
+
+      const observerOptions = {
+        threshold: [0, 0.5, 1],
+        rootMargin: "0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            const rect = entry.target.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const sectionMiddle = rect.top + rect.height / 2;
+            const viewportMiddle = windowHeight / 2;
+            if (Math.abs(sectionMiddle - viewportMiddle) < windowHeight / 3) {
+              entry.target.classList.add("active-section");
+            } else {
+              entry.target.classList.remove("active-section");
+            }
+          } else {
+            entry.target.classList.remove("visible");
+            entry.target.classList.remove("active-section");
+          }
+        });
+      }, observerOptions);
+
+      window.addEventListener("scroll", () => {
+        document.querySelectorAll("section").forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const sectionMiddle = rect.top + rect.height / 2;
+          const viewportMiddle = windowHeight / 2;
+          if (Math.abs(sectionMiddle - viewportMiddle) < windowHeight / 3) {
+            section.classList.add("active-section");
+          } else {
+            section.classList.remove("active-section");
+          }
+        });
+      });
+
+      document.querySelectorAll("section").forEach((section) => {
+        section.classList.add("fade-in-section");
+        observer.observe(section);
       });
     </script>
   </body>
