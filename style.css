@@ -84,6 +84,15 @@ body {
   }
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,..."); /* subtle noise */
+}
+
 header {
   background: var(--surface);
   padding: 50px 60px;
@@ -96,6 +105,7 @@ header {
   display: flex;
   align-items: center;
   gap: 50px;
+  backdrop-filter: blur(10px);
 }
 
 .profile-pic {
@@ -133,10 +143,31 @@ header::before {
   height: 4px;
   background: linear-gradient(
     90deg,
-    var(--accent-prime),
-    var(--accent-sec)
-  );
+    var(--accent-prime) 0%,
+    color-mix(in srgb, var(--accent-prime), var(--accent-sec) 50%) 50%,
+    var(--accent-sec) 100%
+  );  
   border-radius: 24px 24px 0 0;
+}
+
+/* Scroll-triggered fade-in animation with scaling */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.5s ease-out;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0) scale(0.95);
+}
+
+/* Active section scaling */
+header.active-section {
+  transform: translateY(0) scale(1) !important;
+  box-shadow: var(--shadow-medium);
 }
 
 h1 {
@@ -183,6 +214,7 @@ h1 {
   background: var(--back-alt);
   color: var(--accent-sec);
   transform: translateY(-2px);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--accent-sec) 30%, transparent);
 }
 
 .contact-item svg {
@@ -218,12 +250,20 @@ h1 {
 }
 
 section {
+  position: relative;
+  overflow: hidden;
   background: var(--surface);
   padding: 45px 60px;
   border-radius: 24px;
   box-shadow: var(--shadow-soft);
   margin-bottom: 30px;
   transition: all 0.5s ease-out;
+  backdrop-filter: blur(10px);
+  opacity: 0.6;
+
+section.active-section {
+  opacity: 1;
+}
 }
 
 section:hover {
@@ -246,6 +286,7 @@ section:hover {
 
 /* Active section scaling */
 section.active-section {
+  opacity: 1;
   transform: translateY(0) scale(1) !important;
   box-shadow: var(--shadow-medium);
 }
@@ -272,25 +313,38 @@ h2 {
 }
 
 .contact-section {
+  /* position: relative; */
   font-size: 1.05rem;
   line-height: 1.8;
   color: var(--text-main);
 }
 
-/* .contact-section::after { */
-/*   content: ""; */
-/*   position: absolute; */
-/*   top: 0; */
-/*   left: 0; */
-/*   bottom: 0; */
-/*   height: 4px; */
-/*   background: linear-gradient( */
-/*     180deg, */
-/*     var(--accent-prime), */
-/*     var(--accent-sec) */
-/*   ); */
-/*   border-radius: 24px 24px 0 0; */
-/* } */
+.contact-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-prime) 0%,
+    color-mix(in srgb, var(--accent-prime), var(--accent-sec) 50%) 50%,
+    var(--accent-sec) 100%
+  );  
+  border-radius: 0 0 24px 24px;
+}
+
+.contact-section-info {
+  /* margin-top: 24px; */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-top: 24px;
+  /* border-top: 1px solid var(--back-alt); */
+}
 
 .edu-item,
 .pub-item {
@@ -436,6 +490,9 @@ html {
   font-size: 1.3rem;
   transition: all 0.3s ease;
   z-index: 1000;
+  /* floating glass thing */
+  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
 }
 
 #theme-toggle:hover {

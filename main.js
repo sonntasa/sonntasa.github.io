@@ -200,7 +200,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 window.addEventListener("scroll", () => {
-  document.querySelectorAll("section").forEach((section) => {
+  document.querySelectorAll("section, header").forEach((section) => {
     const rect = section.getBoundingClientRect();
     const sectionMiddle = rect.top + rect.height / 2;
     const viewportMiddle = window.innerHeight / 2;
@@ -261,7 +261,7 @@ window.addEventListener("DOMContentLoaded", () => {
     "Data file not found. Please add a data.bib file to your repository.",
   );
 
-  document.querySelectorAll("section").forEach((section) => {
+  document.querySelectorAll("section, header").forEach((section) => {
     section.classList.add("fade-in-section");
     observer.observe(section);
   });
