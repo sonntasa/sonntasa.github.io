@@ -173,79 +173,53 @@ async function loadBib(
   }
 }
 
-// ── Scroll animations ────────────────────────────────────────────────────────
-const observerOptions = {
-  threshold: [0, 0.5, 1],
-  rootMargin: "0px",
-};
+// ── Scroll fade-in (opacity only, no scale) ──────────────────────────────────
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("visible");
-      const rect = entry.target.getBoundingClientRect();
-      const sectionMiddle = rect.top + rect.height / 2;
-      const viewportMiddle = window.innerHeight / 2;
-      if (
-        Math.abs(sectionMiddle - viewportMiddle) <
-        window.innerHeight / 3
-      ) {
-        entry.target.classList.add("active-section");
-      } else {
-        entry.target.classList.remove("active-section");
-      }
     } else {
-      entry.target.classList.remove("visible", "active-section");
+      entry.target.classList.remove("visible");
     }
   });
-}, observerOptions);
-
-window.addEventListener("scroll", () => {
-  document.querySelectorAll("section, header").forEach((section) => {
-    const rect = section.getBoundingClientRect();
-    const sectionMiddle = rect.top + rect.height / 2;
-    const viewportMiddle = window.innerHeight / 2;
-    if (
-      Math.abs(sectionMiddle - viewportMiddle) <
-      window.innerHeight / 3
-    ) {
-      section.classList.add("active-section");
-    } else {
-      section.classList.remove("active-section");
-    }
-  });
-});
-
-// ── Theme toggle ─────────────────────────────────────────────────────────────
-const toggle = document.getElementById("theme-toggle");
-const icon = document.getElementById("theme-icon");
-const saved =
-  localStorage.getItem("theme") ||
-  (window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light");
-
-document.documentElement.setAttribute("data-theme", saved);
-icon.textContent = saved === "dark" ? "☀️" : "🌙";
-
-toggle.addEventListener("click", () => {
-  const next =
-    document.documentElement.getAttribute("data-theme") === "dark"
-      ? "light"
-      : "dark";
-  document.documentElement.setAttribute("data-theme", next);
-  localStorage.setItem("theme", next);
-  icon.textContent = next === "dark" ? "☀️" : "🌙";
-});
-
-// ── Fold ─────────────────────────────────────────────────────────────────────
-document.querySelectorAll(".section-toggle").forEach((toggle) => {
-  toggle.addEventListener("click", () => {
-    toggle.closest("section").classList.toggle("open");
-  });
-});
+}, { threshold: 0.1 });
 
 // ── Init ─────────────────────────────────────────────────────────────────────
 window.addEventListener("DOMContentLoaded", () => {
+
+  // ── Theme toggle ───────────────────────────────────────────────────────────
+  const toggle = document.getElementById("theme-toggle");
+  const icon = document.getElementById("theme-icon");
+  const saved =
+    localStorage.getItem("theme") ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  document.documentElement.setAttribute("data-theme", saved);
+  icon.textContent = saved === "dark" ? "☀️" : "🌙";
+
+  toggle.addEventListener("click", () => {
+    const next =
+      document.documentElement.getAttribute("data-theme") === "dark"
+        ? "light"
+        : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    icon.textContent = next === "dark" ? "☀️" : "🌙";
+  });
+
+  // ── Fold-outs ──────────────────────────────────────────────────────────────
+  document.querySelectorAll(".section-toggle").forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      toggle.closest("section").classList.toggle("open");
+    });
+  });
+
+  // Open About by default
+  document.querySelector("#about").classList.add("open");
+
+  // ── BibTeX ─────────────────────────────────────────────────────────────────
   loadBib(
     "./lib/publications.bib",
     "publications-list",
@@ -268,8 +242,9 @@ window.addEventListener("DOMContentLoaded", () => {
     "Data file not found. Please add a data.bib file to your repository.",
   );
 
-  document.querySelectorAll("section, header").forEach((section) => {
-    section.classList.add("fade-in-section");
-    observer.observe(section);
+  // ── Scroll observer ────────────────────────────────────────────────────────
+  document.querySelectorAll("section, header").forEach((el) => {
+    el.classList.add("fade-in-section");
+    observer.observe(el);
   });
 });

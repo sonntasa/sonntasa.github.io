@@ -77,7 +77,6 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -108,26 +107,11 @@ header {
   backdrop-filter: blur(10px);
 }
 
-.profile-pic {
-  width: 180px;
-  height: 180px;
-  border-radius: 20px;
-  object-fit: cover;
-  box-shadow: var(--shadow-soft);
-  flex-shrink: 0;
-  border: 3px solid var(--back-alt);
-}
-
-.header-content {
-  flex: 1;
-}
-
 @keyframes slideDown {
   from {
     opacity: 0;
     transform: translateY(-30px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -146,28 +130,22 @@ header::before {
     var(--accent-prime) 0%,
     color-mix(in srgb, var(--accent-prime), var(--accent-sec) 50%) 50%,
     var(--accent-sec) 100%
-  );  
+  );
   border-radius: 24px 24px 0 0;
 }
 
-/* Scroll-triggered fade-in animation with scaling */
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(30px) scale(0.95);
-  transition:
-    opacity 0.6s ease-out,
-    transform 0.5s ease-out;
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: var(--shadow-soft);
+  flex-shrink: 0;
+  border: 3px solid var(--back-alt);
 }
 
-.fade-in-section.visible {
-  opacity: 1;
-  transform: translateY(0) scale(0.95);
-}
-
-/* Active section scaling */
-header.active-section {
-  transform: translateY(0) scale(1) !important;
-  box-shadow: var(--shadow-medium);
+.header-content {
+  flex: 1;
 }
 
 h1 {
@@ -249,6 +227,8 @@ h1 {
   display: block;
 }
 
+/* ── Sections ────────────────────────────────────────────────────────────── */
+
 section {
   position: relative;
   overflow: hidden;
@@ -257,20 +237,35 @@ section {
   border-radius: 24px;
   box-shadow: var(--shadow-soft);
   margin-bottom: 30px;
-  transition: all 0.5s ease-out;
   backdrop-filter: blur(10px);
-  opacity: 0.6;
 
-section.active-section {
-  opacity: 1;
+  /* default: dimmed */
+  opacity: 0.6;
+  transform: scale(1);
+  transition:
+    opacity 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
 }
+
+/* scrolled into view but still closed */
+section.visible {
+  opacity: 0.75;
+}
+
+/* opened by user: full presence + subtle scale */
+section.open {
+  opacity: 1;
+  transform: scale(1.01);
+  box-shadow: var(--shadow-medium);
 }
 
 section:hover {
   box-shadow: var(--shadow-medium);
 }
 
-/* Fold out  */
+/* ── Fold-out ────────────────────────────────────────────────────────────── */
+
 .section-toggle {
   cursor: pointer;
   user-select: none;
@@ -282,8 +277,6 @@ section:hover {
 }
 
 .section-toggle::after {
-  /* content: "+"; */
-  /* content: "❯"; */
   content: "›";
   font-size: 1.5rem;
   font-weight: 300;
@@ -313,26 +306,26 @@ section.open .section-body {
   padding-top: 30px;
 }
 
-/* Scroll-triggered fade-in animation with scaling */
+/* ── Initial page-load fade-in ───────────────────────────────────────────── */
+
 .fade-in-section {
   opacity: 0;
-  transform: translateY(30px) scale(0.95);
+  transform: translateY(20px);
   transition:
     opacity 0.6s ease-out,
     transform 0.5s ease-out;
 }
 
 .fade-in-section.visible {
-  opacity: 1;
-  transform: translateY(0) scale(0.95);
+  opacity: 0.75;
+  transform: translateY(0);
 }
 
-/* Active section scaling */
-section.active-section {
+.fade-in-section.open {
   opacity: 1;
-  transform: translateY(0) scale(1) !important;
-  box-shadow: var(--shadow-medium);
 }
+
+/* ── Typography ──────────────────────────────────────────────────────────── */
 
 h2 {
   /* font-family: "Crimson Pro", serif; */
@@ -341,7 +334,6 @@ h2 {
   font-family: "Alan Sans";
   font-weight: 600;
   font-size: 2rem;
-  /* font-weight: 600; */
   color: var(--accent-prime);
   margin-bottom: 30px;
   padding-bottom: 16px;
@@ -355,8 +347,9 @@ h2 {
   color: var(--text-main);
 }
 
+/* ── Contact section ─────────────────────────────────────────────────────── */
+
 .contact-section {
-  /* position: relative; */
   font-size: 1.05rem;
   line-height: 1.8;
   color: var(--text-main);
@@ -374,20 +367,20 @@ h2 {
     var(--accent-prime) 0%,
     color-mix(in srgb, var(--accent-prime), var(--accent-sec) 50%) 50%,
     var(--accent-sec) 100%
-  );  
+  );
   border-radius: 0 0 24px 24px;
 }
 
 .contact-section-info {
-  /* margin-top: 24px; */
   margin-left: auto;
   margin-right: auto;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
   padding-top: 24px;
-  /* border-top: 1px solid var(--back-alt); */
 }
+
+/* ── Publication / education items ───────────────────────────────────────── */
 
 .edu-item,
 .pub-item {
@@ -437,9 +430,6 @@ h2 {
 }
 
 .pub-title {
-  /* font-family: "Crimson Pro", serif; */
-  /* font-family: "Varela Round"; */
-  /* font-weight: 600; */
   font-family: "Alan Sans";
   font-weight: 600;
   font-size: 1.15rem;
@@ -468,6 +458,8 @@ h2 {
   padding: 20px;
   font-style: italic;
 }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
   .container {
@@ -527,13 +519,11 @@ html {
   height: 48px;
   border-radius: 50%;
   border: none;
-  background: var(--back-alt);
   box-shadow: var(--shadow-medium);
   cursor: pointer;
   font-size: 1.3rem;
   transition: all 0.3s ease;
   z-index: 1000;
-  /* floating glass thing */
   backdrop-filter: blur(10px);
   background: color-mix(in srgb, var(--surface) 70%, transparent);
 }
