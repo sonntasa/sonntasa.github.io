@@ -253,10 +253,10 @@ section.visible {
   opacity: 0.75;
 }
 
-/* opened by user: full presence + subtle scale */
+/* opened by user: full presence + no scale :D */
 section.open {
   opacity: 1;
-  transform: scale(1.01);
+  /* transform: scale(1); */
   box-shadow: var(--shadow-medium);
 }
 
