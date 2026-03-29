@@ -270,6 +270,49 @@ section:hover {
   box-shadow: var(--shadow-medium);
 }
 
+/* Fold out  */
+.section-toggle {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.section-toggle::after {
+  /* content: "+"; */
+  /* content: "❯"; */
+  content: "›";
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text-sec);
+  transition: transform 0.3s ease;
+  transform: rotate(90deg);
+}
+
+section.open .section-toggle::after {
+  transform: rotate(270deg);
+}
+
+.section-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+
+.section-body > * {
+  overflow: hidden;
+}
+
+section.open .section-body {
+  grid-template-rows: 1fr;
+  margin-top: 30px;
+  border-top: 2px solid var(--back-alt);
+  padding-top: 30px;
+}
+
 /* Scroll-triggered fade-in animation with scaling */
 .fade-in-section {
   opacity: 0;

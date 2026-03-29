@@ -237,6 +237,13 @@ toggle.addEventListener("click", () => {
   icon.textContent = next === "dark" ? "☀️" : "🌙";
 });
 
+// ── Fold ─────────────────────────────────────────────────────────────────────
+document.querySelectorAll(".section-toggle").forEach((toggle) => {
+  toggle.addEventListener("click", () => {
+    toggle.closest("section").classList.toggle("open");
+  });
+});
+
 // ── Init ─────────────────────────────────────────────────────────────────────
 window.addEventListener("DOMContentLoaded", () => {
   loadBib(
