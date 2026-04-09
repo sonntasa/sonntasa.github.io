@@ -27,6 +27,11 @@
   --surface: #ffffff;
   --shadow-soft: 0 2px 12px rgba(61, 56, 52, 0.08);
   --shadow-medium: 0 4px 24px rgba(61, 56, 52, 0.12);
+  --switch-star: #ffffff;
+  --switch-bg: #bcdcff;
+  --switch-bg-top: #eaf6ff;
+  --switch-bg: #a0c4f0;
+  --switch-bg-top: #d0e4f5;
 }
 
 [data-theme="dark"] {
@@ -39,6 +44,9 @@
   --surface: #2a2435;
   --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.3);
   --shadow-medium: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --switch-star: #ffffff;
+  --switch-bg: #2a1f4a;
+  --switch-bg-top: color-mix(in srgb, #f06090 70%, #2a1f4a);
 }
 
 * {
@@ -542,7 +550,12 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--surface);
+  /* background-color: var(--surface); */
+  background: linear-gradient(
+    to top,
+    var(--switch-bg),
+    var(--switch-bg-top)
+  );
   transition: 0.4s;
   border-radius: 30px;
   overflow: hidden;
@@ -561,22 +574,30 @@ html {
   box-shadow: inset 8px -4px 0px 0px var(--text-main);
 }
 
-.switch input:checked + .slider {
-  background-color: var(--accent-sec);
-}
-
 .switch input:checked + .slider:before {
   transform: translateX(1.8em);
-  box-shadow: inset 15px -4px 0px 15px #ffcf48;
+  box-shadow: inset 15px -4px 0px 15px #ffd8a8;
 }
 
 .star {
-  background-color: var(--text-main);
+  background-color: var(--switch-star);
   border-radius: 50%;
   position: absolute;
   width: 5px;
-  transition: all 0.4s;
   height: 5px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: 
+    opacity 0.4s ease,
+    transform 0.4s ease;
+    filter 0.4s ease;
+}
+
+/* When switching to LIGHT (checked) → stars disappear */
+.switch input:checked ~ .slider .star {
+  opacity: 0;
+  transform: translateY(-8px); /* drift upward */
+  filter: blur(1px);
 }
 
 .star_1 {
@@ -596,6 +617,7 @@ html {
 
 .switch input:checked ~ .slider .star {
   opacity: 0;
+  transition-delay: 0s;
 }
 
 .cloud {
@@ -603,10 +625,23 @@ html {
   position: absolute;
   bottom: -1.4em;
   left: -1.1em;
+
   opacity: 0;
-  transition: all 0.4s;
+  transform: translateY(10px) scale(0.95); /* start slightly below */
+  
+  transition: 
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+/* When LIGHT mode → clouds appear */
+.switch input:checked ~ .slider .cloud {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .switch input:checked ~ .slider .cloud {
   opacity: 1;
+  transition-delay: 0.15s;
+  transform: translateY(0) scale(1);
 }
