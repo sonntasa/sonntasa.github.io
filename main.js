@@ -188,8 +188,7 @@ const observer = new IntersectionObserver((entries) => {
 window.addEventListener("DOMContentLoaded", () => {
 
   // ── Theme toggle ───────────────────────────────────────────────────────────
-  const toggle = document.getElementById("theme-toggle");
-  const icon = document.getElementById("theme-icon");
+  const toggle = document.getElementById("checkbox");
   // preference for dark mode
   const saved = "dark"
   // const saved =
@@ -199,16 +198,15 @@ window.addEventListener("DOMContentLoaded", () => {
   //     : "light");
 
   document.documentElement.setAttribute("data-theme", saved);
-  icon.textContent = saved === "dark" ? "☀️" : "🌙";
 
-  toggle.addEventListener("click", () => {
-    const next =
-      document.documentElement.getAttribute("data-theme") === "dark"
-        ? "light"
-        : "dark";
+  // Sync checkbox with theme
+  toggle.checked = saved === "light";
+
+  toggle.addEventListener("change", () => {
+    const next = toggle.checked ? "light" : "dark";
+
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
-    icon.textContent = next === "dark" ? "☀️" : "🌙";
   });
 
   // ── Fold-outs ──────────────────────────────────────────────────────────────
