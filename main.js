@@ -190,11 +190,13 @@ window.addEventListener("DOMContentLoaded", () => {
   // ── Theme toggle ───────────────────────────────────────────────────────────
   const toggle = document.getElementById("theme-toggle");
   const icon = document.getElementById("theme-icon");
-  const saved =
-    localStorage.getItem("theme") ||
-    (window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light");
+  // preference for dark mode
+  const saved = "dark"
+  // const saved =
+  //   localStorage.getItem("theme") ||
+  //   (window.matchMedia("(prefers-color-scheme: dark)").matches
+  //     ? "dark"
+  //     : "light");
 
   document.documentElement.setAttribute("data-theme", saved);
   icon.textContent = saved === "dark" ? "☀️" : "🌙";
@@ -243,7 +245,8 @@ window.addEventListener("DOMContentLoaded", () => {
   );
 
   // ── Scroll observer ────────────────────────────────────────────────────────
-  document.querySelectorAll("section, header").forEach((el) => {
+  document.querySelectorAll("section").forEach((el) => {
+  // document.querySelectorAll("section, header").forEach((el) => {
     el.classList.add("fade-in-section");
     observer.observe(el);
   });
