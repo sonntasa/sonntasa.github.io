@@ -140,6 +140,10 @@ function displayEntries(entries, containerId, venueFields, emptyMessage) {
         links += ` <a href="${fields.url}" target="_blank"
     style="color:var(--accent-sec);text-decoration:none;border-bottom:1px solid var(--accent-sec);">[Link]</a>`;
       }
+      if (fields.pdf) {
+        links += ` <a href="${fields.pdf}" target="_blank"
+          style="color:var(--accent-sec);text-decoration:none;border-bottom:1px solid var(--accent-sec);">[PDF]</a>`;
+      }
 
       const venueParts = [venue, note, year].filter(Boolean).join(", ");
       return `
