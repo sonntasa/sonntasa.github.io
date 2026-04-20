@@ -222,6 +222,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Open About by default
   document.querySelector("#about").classList.add("open");
+  // Open Publications by default
+  document.querySelector("#publications").classList.add("open");
 
   // ── BibTeX ─────────────────────────────────────────────────────────────────
   loadBib(
