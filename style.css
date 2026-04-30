@@ -46,7 +46,7 @@
   --shadow-medium: 0 4px 24px rgba(0, 0, 0, 0.5);
   --switch-star: #ffffff;
   --switch-bg: #2a1f4a;
-  --switch-bg-top: color-mix(in srgb, #f06090 70%, #2a1f4a);
+  --switch-bg-top: color-mix(in srgb, #60a5fa 70%, #2a1f4a);
 }
 
 * {
