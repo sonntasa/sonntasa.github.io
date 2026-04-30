@@ -220,10 +220,14 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Open About by default
+// ── Open About by default ───────────────────────────────────────────
   document.querySelector("#about").classList.add("open");
-  // Open Publications by default
+
+// ── Open Publications by default ────────────────────────────────────
   document.querySelector("#publications").classList.add("open");
+
+// ── Open Conference Contributions by default ────────────────────────
+  document.querySelector("#presentations").classList.add("open");
 
   // ── BibTeX ─────────────────────────────────────────────────────────────────
   loadBib(
