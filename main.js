@@ -136,7 +136,9 @@ function displayEntries(entries, containerId, venueFields, emptyMessage) {
         links += ` <a href="https://doi.org/${fields.doi}" target="_blank"
     style="color:var(--accent-sec);text-decoration:none;border-bottom:1px solid var(--accent-sec);">[DOI]</a>`;
       }
-      if (fields.url && !fields.doi) {
+      // ── URL & DOI no longer mutually exclusive ──────────────────────────
+      // if (fields.url && !fields.doi) {
+      if (fields.url) {
         links += ` <a href="${fields.url}" target="_blank"
     style="color:var(--accent-sec);text-decoration:none;border-bottom:1px solid var(--accent-sec);">[Link]</a>`;
       }
