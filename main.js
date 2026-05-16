@@ -235,7 +235,7 @@ window.addEventListener("DOMContentLoaded", () => {
   loadBib(
     "./lib/publications.bib",
     "publications-list",
-    ["journal", "booktitle", "venue", "publisher", "howpublished"],
+    ["journaltitle", "booktitle", "venue", "publisher", "howpublished"],
     "No publications found in the BibTeX file.",
     "Publications file not found. Please add a publications.bib file to your repository.",
   );
