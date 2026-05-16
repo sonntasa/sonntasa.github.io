@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 110">
+  <g transform="translate(0,10)">
+    <style>
+      .b { fill: none; stroke: #6C63FF; stroke-width: 4;
+           stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+    <path class="b" d="M32,12 C32,4 42,0 50,4 C54,-4 66,-4 70,6 C80,4 88,14 84,24 C92,28 94,40 86,46 C90,56 86,68 76,70 C76,78 68,84 58,82 L58,92 L42,92 L42,82 C32,84 24,78 24,70 C14,68 10,56 14,46 C6,40 8,28 16,24 C12,14 20,4 30,6 C34,-4 46,-4 50,4"/>
+    <line class="b" x1="50" y1="16" x2="50" y2="92" stroke-width="2" opacity="0.4"/>
+    <path class="b" d="M35,42 Q43,34 50,40 Q57,34 65,42" stroke-width="2.5"/>
+    <path class="b" d="M30,58 Q40,52 50,58 Q60,52 70,58" stroke-width="2.5"/>
+  </g>
+</svg>
