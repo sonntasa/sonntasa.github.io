@@ -235,6 +235,15 @@ h1 {
   display: block;
 }
 
+.my-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--accent-sec);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
 /* ── Sections ────────────────────────────────────────────────────────────── */
 
 section {
