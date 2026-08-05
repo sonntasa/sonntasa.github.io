@@ -93,6 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#about").classList.add("open");
   document.querySelector("#publications").classList.add("open");
   document.querySelector("#presentations").classList.add("open");
+  document.querySelector("#playground").classList.add("open");
 
   // ── BibTeX ─────────────────────────────────────────────────────────────────
   loadBib(
