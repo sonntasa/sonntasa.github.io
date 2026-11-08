@@ -1,195 +1,288 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel Sonntag &mdash; Personal Website</title>
+    <meta
+      name="description"
+      content="Samuel Sonntag, PhD candidate in the Cognition and Language group, University of Tübingen. Research on negation."
+    />
+    <link rel="icon" type="image/svg+xml" href="./assets/brain.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        var t = null;
+        try {
+          t = localStorage.getItem("theme");
+        } catch (e) {}
+        if (!t)
+          t = matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samuel Sonntag &mdash; Personal Website</title>
-  <link rel="icon" type="image/svg+xml" href="./assets/brain.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <script>
-    /* set theme before paint to avoid a flash */
-    (function () {
-      var t = null;
-      try {
-        t = localStorage.getItem("theme");
-      } catch (e) { }
-      if (!t)
-        t = matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-      document.documentElement.setAttribute("data-theme", t);
-    })();
-  </script>
-</head>
-
-<body>
-  <nav class="topbar" aria-label="Main">
-    <a href="#top" class="brand">Samuel Sonntag</a>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#publications">Publications</a>
-      <a href="#presentations">Talks</a>
-      <a href="#education">Education</a>
-      <a href="#data">Data</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <button id="theme-toggle" type="button" aria-label="Switch between light and dark mode">
-      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="12" cy="12" r="4.5" />
-        <path
-          d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" />
-      </svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z" />
-      </svg>
-    </button>
-  </nav>
-
-  <main id="top">
-    <header class="hero">
-      <div class="hero-text">
-        <h1>Samuel Sonntag</h1>
-        <p class="who">
-          I investigate the processing of negation in my PhD at the University
-          of Tübingen (SFB 1692, NegLaB &mdash; Negation in Language and
-          Beyond), and I’m training as a cognitive behavioral psychotherapist.
-        </p>
-        <div class="pills">
-          <a class="pill primary" href="mailto:samuel.sonntag@uni-tuebingen.de">Email</a>
-          <a class="pill" href="https://github.com/sonntasa" target="_blank" rel="noopener">GitHub</a>
-          <a class="pill" href="https://www.researchgate.net/profile/Samuel-Sonntag" target="_blank"
-            rel="noopener">ResearchGate</a>
-          <a class="pill" href="https://www.linkedin.com/in/samuel-sonntag-76663b3b9" target="_blank"
-            rel="noopener">LinkedIn</a>
-        </div>
-        <div class="logos">
-          <a href="https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/psychologie/arbeitsbereiche/kognition-und-sprache/arbeitsbereich/samuel-sonntag/"
-            target="_blank" rel="noopener"><img src="./logos/Logo_Universitaet_Tuebingen.svg"
-              alt="University of Tübingen" /></a>
-          <a href="https://www.neglab.de/samuel-sonntag/" target="_blank" rel="noopener"><img src="./logos/neglab.svg"
-              alt="NegLaB" /></a>
-        </div>
-      </div>
-      <img class="portrait" src="./pics/ocean.jpg" alt="Samuel Sonntag" />
+  <body>
+    <header class="topline">
+      <p class="tag">
+        <span class="path">&rarr; samuel.sonntag / uni-tübingen</span
+        ><span class="meta"
+          >&middot; cognition &amp; language &middot; tübingen &middot;
+          v.2026</span
+        >
+      </p>
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Switch between light and dark mode"
+      >
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.5" />
+          <path
+            d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"
+          />
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z" />
+        </svg>
+      </button>
     </header>
 
-    <section id="about">
-      <h2>About</h2>
-      <div class="body">
-        <p>
-          My background is in Biological Psychology, where I studied conflict
-          processing with behavioral, electrophysiological, and cognitive
-          modeling approaches. My PhD takes me in a different but
-          complementary direction: the cognitive processes behind negation,
-          across multiple modalities.
-        </p>
-        <p>
-          Alongside research, I&rsquo;m training as a Cognitive Behavioral
-          Psychotherapist. It reflects my interest in psychology across the
-          whole spectrum, from the experimental to the clinical.
-        </p>
-      </div>
-    </section>
+    <div class="shell">
+      <aside class="side">
+        <img class="portrait" src="./pics/ocean.jpg" alt="Samuel Sonntag" />
+        <nav class="index" aria-label="Sections">
+          <p class="k">Sections</p>
+          <a href="#top"><span>00</span>Index</a>
+          <a href="#about"><span>01</span>About</a>
+          <a href="#publications"><span>02</span>Publications</a>
+          <a href="#presentations"><span>03</span>Talks</a>
+          <a href="#education"><span>04</span>Education</a>
+          <a href="#data"><span>05</span>Data &amp; software</a>
+          <!-- <a href="#cv"><span>06</span>CV</a> -->
+          <a href="#contact"><span>07</span>Contact</a>
+        </nav>
+        <div class="upd">
+          <p class="k">last updated</p>
+          <time datetime="2026-11-08">2026-11-08</time>
+        </div>
+      </aside>
 
-    <section id="publications">
-      <h2>Publications</h2>
-      <div class="body" id="publications-list">
-        <div class="loading">Loading publications&hellip;</div>
-      </div>
-    </section>
+      <main>
+        <section id="top" class="hero">
+          <p class="sec">§ 00 &mdash;</p>
+          <h1>Samuel Sonntag</h1>
+          <p class="lead">
+            I&rsquo;m a PhD researcher investigating the cognitive processing of
+            negation across modalities. I&rsquo;m also training as a Cognitive
+            Behavioral Psychotherapist.
+          </p>
+          <dl class="affil">
+            <div>
+              <dt>Institution</dt>
+              <dd>
+                <a
+                  href="https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/psychologie/arbeitsbereiche/kognition-und-sprache/arbeitsbereich/samuel-sonntag/"
+                  target="_blank"
+                  rel="noopener"
+                  >University of Tübingen</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>Group</dt>
+              <dd>
+                <a
+                  href="https://www.neglab.de/samuel-sonntag/"
+                  target="_blank"
+                  rel="noopener"
+                  >Cognition &amp; Language · NegLaB</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>Supervisor</dt>
+              <dd>Dr. Carolin Dudschig</dd>
+            </div>
+          </dl>
+        </section>
 
-    <section id="presentations">
-      <h2>Conference contributions</h2>
-      <div class="body" id="presentations-list">
-        <div class="loading">Loading presentations&hellip;</div>
-      </div>
-    </section>
+        <section id="about">
+          <p class="sec">§ 01 &mdash;</p>
+          <h2>About</h2>
+          <p>
+            My academic background is in Biological Psychology, where I studied
+            conflict processing with behavioral, electrophysiological, and
+            cognitive modeling approaches. My PhD takes me in a different but
+            complementary direction, investigating negation across multiple
+            modalities.
+          </p>
+          <p>
+            My clinical training runs alongside the research. It reflects my
+            interest in psychology across the whole spectrum, from the
+            experimental to the clinical.
+          </p>
+        </section>
 
-    <section id="education">
-      <h2>Education</h2>
-      <div class="body">
-        <div class="edu-item">
-          <div>
-            <div class="degree">Ph.D. in Psychology</div>
-            <div class="institution">
-              University of Tübingen &middot; Supervisor: Dr. Carolin Dudschig
+        <section id="publications">
+          <p class="sec">§ 02 &mdash;</p>
+          <h2>Publications</h2>
+          <div id="selected" class="selected" hidden>
+            <p class="sub">Selected papers</p>
+            <div class="strip-wrap">
+              <button class="arrow" data-dir="-1" aria-label="Previous">
+                &lsaquo;
+              </button>
+              <div class="strip" id="strip"></div>
+              <button class="arrow" data-dir="1" aria-label="Next">
+                &rsaquo;
+              </button>
             </div>
           </div>
-          <div class="year">Aug 2024 &ndash; now</div>
-        </div>
-        <div class="edu-item">
-          <div>
-            <div class="degree">
-              Certification in Cognitive Behavioral Therapy
+          <div id="publications-list">
+            <p class="loading">Loading publications&hellip;</p>
+          </div>
+        </section>
+
+        <section id="presentations">
+          <p class="sec">§ 03 &mdash;</p>
+          <h2>Conference contributions</h2>
+          <div id="presentations-list">
+            <p class="loading">Loading presentations&hellip;</p>
+          </div>
+        </section>
+
+        <section id="education">
+          <p class="sec">§ 04 &mdash;</p>
+          <h2>Education</h2>
+          <div class="edu">
+            <div>
+              <span class="yr">2024 &ndash; now</span>
+              <div>
+                <b>Ph.D. in Psychology</b><br />University of Tübingen &middot;
+                Supervisor: Dr. Carolin Dudschig
+              </div>
             </div>
-            <div class="institution">
-              Tübinger Akademie für Verhaltenstherapie (TAVT)
+            <div>
+              <span class="yr">2024 &ndash; now</span>
+              <div>
+                <b>Certification in Cognitive Behavioral Therapy</b
+                ><br />Tübinger Akademie für Verhaltenstherapie (TAVT)
+              </div>
+            </div>
+            <div>
+              <span class="yr">2022 &ndash; 2024</span>
+              <div><b>M.Sc. in Psychology</b><br />University of Tübingen</div>
+            </div>
+            <div>
+              <span class="yr">2018 &ndash; 2022</span>
+              <div><b>B.Sc. in Psychology</b><br />University of Tübingen</div>
             </div>
           </div>
-          <div class="year">Sep 2024 &ndash; now</div>
-        </div>
-        <div class="edu-item">
-          <div>
-            <div class="degree">M.Sc. in Psychology</div>
-            <div class="institution">University of Tübingen</div>
+        </section>
+
+        <section id="data">
+          <p class="sec">§ 05 &mdash;</p>
+          <h2>Datasets &amp; software</h2>
+          <div id="data-list">
+            <p class="loading">Loading datasets and software&hellip;</p>
           </div>
-          <div class="year">2022 &ndash; 2024</div>
-        </div>
-        <div class="edu-item">
-          <div>
-            <div class="degree">B.Sc. in Psychology</div>
-            <div class="institution">University of Tübingen</div>
-          </div>
-          <div class="year">2018 &ndash; 2022</div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section id="data">
-      <h2>Datasets and software</h2>
-      <div class="body" id="data-list">
-        <div class="loading">Loading datasets and software&hellip;</div>
-      </div>
-    </section>
+        <!-- <section id="cv"> -->
+        <!--   <p class="sec">§ 06 &mdash;</p> -->
+        <!--   <h2>Curriculum Vitae</h2> -->
+        <!--   <div class="viewer" id="cv-viewer" data-src="./cv/cv.pdf"> -->
+        <!--     <div class="vbar"> -->
+        <!--       <span class="vname">cv.pdf</span> -->
+        <!--       <span class="vnav"> -->
+        <!--         <button id="cv-prev" aria-label="Previous page"> -->
+        <!--           &lsaquo; -->
+        <!--         </button> -->
+        <!--         <span id="cv-page">1 / 1</span> -->
+        <!--         <button id="cv-next" aria-label="Next page">&rsaquo;</button> -->
+        <!--       </span> -->
+        <!--       <a class="vdl" href="./cv/cv.pdf" download>&darr; download</a> -->
+        <!--     </div> -->
+        <!--     <div class="vstage"><canvas id="cv-canvas"></canvas></div> -->
+        <!--   </div> -->
+        <!--   <p class="dl"> -->
+        <!--     <a href="./cv/cv.pdf">&rarr; download full cv (pdf)</a> -->
+        <!--   </p> -->
+        <!-- </section> -->
 
-    <section id="playground">
-      <h2>Playground</h2>
-      <div class="body">
-        <p>
-          Want a feel for our work, in both output and content? Try the
-          <a class="text-link" href="https://playground.samuel-sonntag.de">playground</a>.
-        </p>
-      </div>
-    </section>
+        <section id="contact">
+          <p class="sec">§ 07 &mdash;</p>
+          <h2>Contact</h2>
+          <dl class="kv">
+            <div>
+              <dt>email</dt>
+              <dd>
+                <a href="mailto:samuel.sonntag@uni-tuebingen.de"
+                  >&rarr; samuel.sonntag@uni-tuebingen.de</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>github</dt>
+              <dd>
+                <a
+                  href="https://github.com/sonntasa"
+                  target="_blank"
+                  rel="noopener"
+                  >&rarr; github.com/sonntasa</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>researchgate</dt>
+              <dd>
+                <a
+                  href="https://www.researchgate.net/profile/Samuel-Sonntag"
+                  target="_blank"
+                  rel="noopener"
+                  >&rarr; researchgate.net/profile/Samuel-Sonntag</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>linkedin</dt>
+              <dd>
+                <a
+                  href="https://www.linkedin.com/in/samuel-sonntag-76663b3b9"
+                  target="_blank"
+                  rel="noopener"
+                  >&rarr; linkedin.com/in/samuel-sonntag</a
+                >
+              </dd>
+            </div>
+            <!-- <div> -->
+            <!--   <dt>playground</dt> -->
+            <!--   <dd> -->
+            <!--     <a href="https://playground.samuel-sonntag.de">&rarr; playground.samuel-sonntag.de</a> -->
+            <!--   </dd> -->
+            <!-- </div> -->
+          </dl>
+          <p class="note">
+            Happy to hear from fellow researchers, prospective collaborators, or
+            anyone curious about my research, myself, or CBT.
+          </p>
+        </section>
+      </main>
+    </div>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="body">
-        <p>
-          I&rsquo;m happy to hear from fellow researchers, prospective
-          collaborators, or anyone curious about my research, myself, or CBT.
-        </p>
-        <div class="pills">
-          <a class="pill primary" href="mailto:samuel.sonntag@uni-tuebingen.de">samuel.sonntag@uni-tuebingen.de</a>
-          <a class="pill" href="https://github.com/sonntasa" target="_blank" rel="noopener">GitHub</a>
-          <a class="pill" href="https://www.researchgate.net/profile/Samuel-Sonntag" target="_blank"
-            rel="noopener">ResearchGate</a>
-          <a class="pill" href="https://www.linkedin.com/in/samuel-sonntag-76663b3b9" target="_blank"
-            rel="noopener">LinkedIn</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/bibtex-parse@1.0.0/index.js"></script>
-  <script src="lib/bib-utils.js"></script>
-  <script src="main.js"></script>
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/bibtex-parse@1.0.0/index.js"></script>
+    <script src="lib/bib-utils.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
