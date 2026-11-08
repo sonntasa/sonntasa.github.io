@@ -1,7 +1,7 @@
 :root {
   --bg: #fbfbf8; --surface: #ffffff; --ink: #16171d; --muted: #5f6475; --line: #e2e3e8;
   --accent: #2c46f0; --accent-ink: #fff;
-  --card-w: 440px; /* width of a paper preview in "Selected papers" */
+  --card-w: 380px; /* width of a paper preview in "Selected papers" */
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
   --sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;

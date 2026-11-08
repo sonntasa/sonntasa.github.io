@@ -3,15 +3,24 @@ const LINKS = [["pdf", "pdf"], ["preprint", "preprint"], ["code", "code"], ["esm
 const hrefOf = (k, v) => (k === "doi" && !/^http/.test(v) ? "https://doi.org/" + v : v);
 const yearOf = (f) => f.year || (f.date ? f.date.split("-")[0] : "");
 
+const clean = (s) => String(s || "").replace(/[{}]/g, "").replace(/\s+/g, " ").trim(); // drop BibTeX braces / stray newlines
+
 function item(e, n, venueFields) {
   const f = e.fields;
   const authors = BibUtils.formatAuthorsAPA(f.author || f.editor || f.editora || "Unknown authors", "Sonntag, Samuel");
-  const venue = [venueFields.map((k) => f[k]).find(Boolean), f.note, yearOf(f)].filter(Boolean).join(", ");
-  const links = LINKS.filter(([k]) => f[k])
-    .map(([k, label]) => `<a href="${hrefOf(k, f[k])}" target="_blank" rel="noopener">&rarr; ${label}</a>`).join("");
+  const note = /\b(ISSN|Pages|Section):/.test(f.note || "") ? "" : f.note; // ignore Zotero metadata notes
+  const first = venueFields.map((k) => f[k]).find(Boolean) || "";
+  const firstIsUrl = /^https?:\/\/\S+$/.test(first);
+  const venue = [firstIsUrl ? "" : first, note, yearOf(f)].filter(Boolean).join(", ");
+  // hide `url` only when it is just the doi.org address of the same doi
+  const urlIsDoi = f.url && f.doi && /^https?:\/\/(dx\.)?doi\.org\//i.test(f.url) &&
+    f.url.toLowerCase().includes(f.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//i, "").toLowerCase());
+  const links = LINKS.filter(([k]) => f[k] && !(k === "url" && urlIsDoi))
+    .map(([k, label]) => `<a href="${hrefOf(k, f[k])}" target="_blank" rel="noopener">&rarr; ${label}</a>`).join("") +
+    (firstIsUrl && !f.url ? `<a href="${first}" target="_blank" rel="noopener">&rarr; link</a>` : "");
   return `<article class="pub"><div class="num">${n ? `[${n}]` : ""}</div><div>
-    <h3>${f.title || f.shorttitle || "Untitled"}</h3><p class="au">${authors}</p>
-    <p class="ve">${venue}</p>${links ? `<p class="lk">${links}</p>` : ""}</div></article>`;
+    <h3>${clean(f.title || f.shorttitle) || "Untitled"}</h3><p class="au">${clean(authors)}</p>
+    <p class="ve">${clean(venue)}</p>${links ? `<p class="lk">${links}</p>` : ""}</div></article>`;
 }
 
 const byYear = (a, b) => (parseInt(yearOf(b.fields)) || 0) - (parseInt(yearOf(a.fields)) || 0);
@@ -145,7 +154,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   loadBib("./lib/presentations.bib", "presentations-list", ["howpublished", "booktitle", "venue", "publisher"],
     { empty: "No presentations found.", error: "Presentations file not found." });
-  loadBib("./lib/data.bib", "data-list", ["howpublished", "url", "publisher", "booktitle", "venue"],
+  loadBib("./lib/data.bib", "data-list", ["howpublished", "publisher", "booktitle", "venue"],
     { empty: "No datasets or software found.", error: "Data file not found." });
   const pubs = await loadBib("./lib/publications.bib", "publications-list",
     ["journaltitle", "booktitle", "venue", "publisher", "howpublished"],
