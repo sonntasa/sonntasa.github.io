@@ -64,6 +64,7 @@ section p + p { margin-top: 1em; }
 .card canvas { aspect-ratio: 1 / 1.414; height: auto; }
 .arrow { position: absolute; top: 40%; z-index: 2; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; font-size: 1.1rem; line-height: 1; }
 .arrow[data-dir="-1"] { left: -14px; } .arrow[data-dir="1"] { right: -14px; }
+.group:first-child { margin-top: 0; }
 .group { font-family: var(--mono); font-size: .75rem; color: var(--muted); margin: 30px 0 4px; }
 .pub { padding: 18px 0; border-bottom: 1px solid var(--line); }
 .pub:last-child { border-bottom: 0; }

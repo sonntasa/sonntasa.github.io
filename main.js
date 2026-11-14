@@ -1,5 +1,5 @@
 // ── BibTeX → entries ────────────────────────────────────────────────────────
-const LINKS = [["pdf", "pdf"], ["preprint", "preprint"], ["code", "code"], ["esm", "esm"], ["doi", "doi"], ["url", "link"]];
+const LINKS = [["pdf", "pdf"], ["preprint", "preprint"], ["code", "code"], ["cran", "cran"], ["docs", "docs"], ["manual", "manual"], ["esm", "esm"], ["doi", "doi"], ["url", "link"]];
 const hrefOf = (k, v) => (k === "doi" && !/^http/.test(v) ? "https://doi.org/" + v : v);
 const yearOf = (f) => f.year || (f.date ? f.date.split("-")[0] : "");
 
@@ -32,6 +32,19 @@ function list(entries, id, venueFields, { numbered = false, groups = false, empt
   const sorted = [...entries].sort(byYear);
   const block = (arr) => arr.map((e, i) => item(e, numbered ? arr.length - i : 0, venueFields)).join("");
   if (!groups) { el.innerHTML = block(sorted); return; }
+  if (groups === "kind") {            // software vs. datasets; headings appear only if both exist
+    const sw = sorted.filter((e) => e.type.toLowerCase() === "software");
+    const ds = sorted.filter((e) => e.type.toLowerCase() !== "software");
+    const both = sw.length && ds.length;
+    el.innerHTML = (sw.length ? (both ? `<p class="group">Software</p>` : "") + block(sw) : "") +
+                   (ds.length ? (both ? `<p class="group">Datasets</p>` : "") + block(ds) : "");
+    const label = both ? "Software & datasets" : sw.length ? "Software" : "Datasets";
+    const h2 = el.closest("section").querySelector("h2");
+    if (h2) h2.textContent = label;
+    const nav = document.querySelector('.index a[href="#data"]');
+    if (nav) nav.lastChild.textContent = label;
+    return;
+  }
   const work = sorted.filter(isWorking), done = sorted.filter((e) => !isWorking(e));
   el.innerHTML = (done.length ? `<p class="group">Peer-reviewed articles</p>${block(done)}` : "") +
                  (work.length ? `<p class="group">Working papers</p>${block(work)}` : "");
@@ -160,7 +173,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   loadBib("./lib/presentations.bib", "presentations-list", ["howpublished", "booktitle", "venue", "publisher"],
     { empty: "No presentations found.", error: "Presentations file not found." });
   loadBib("./lib/data.bib", "data-list", ["howpublished", "publisher", "booktitle", "venue"],
-    { empty: "No datasets or software found.", error: "Data file not found." });
+    { groups: "kind", empty: "No software or datasets found.", error: "Data file not found." });
   const pubs = await loadBib("./lib/publications.bib", "publications-list",
     ["journaltitle", "booktitle", "venue", "publisher", "howpublished"],
     { numbered: true, groups: true, empty: "No publications found.", error: "Publications file not found." });
