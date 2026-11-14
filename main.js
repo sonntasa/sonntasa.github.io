@@ -147,6 +147,28 @@ function initCV() {
   window.addEventListener("resize", () => { clearTimeout(timer); timer = setTimeout(() => doc && show(), 200); });
 }
 
+// ── "last updated": date of the newest commit in the site's GitHub repo ─────
+// Falls back to the date written in index.html if the request fails.
+const SITE_REPO = "sonntasa/sonntasa.github.io"; // <- change if your site lives in another repo
+
+async function lastUpdated() {
+  const el = document.querySelector(".upd time");
+  if (!el) return;
+  const show = (iso) => { el.textContent = iso; el.setAttribute("datetime", iso); };
+  try {
+    const cached = sessionStorage.getItem("lastUpdated");
+    if (cached) return show(cached);
+    const r = await fetch(`https://api.github.com/repos/${SITE_REPO}/commits?per_page=1`);
+    if (!r.ok) throw new Error(r.status);
+    const [latest] = await r.json();
+    const iso = new Date(latest.commit.committer.date).toLocaleDateString("sv-SE"); // YYYY-MM-DD, local time
+    sessionStorage.setItem("lastUpdated", iso);
+    show(iso);
+  } catch (err) {
+    console.warn("last-updated lookup failed, keeping the date in index.html", err);
+  }
+}
+
 // ── Init ────────────────────────────────────────────────────────────────────
 window.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("theme-toggle").addEventListener("click", () => {
@@ -169,6 +191,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   }, { passive: true });
 
   initCV();
+  lastUpdated();
 
   loadBib("./lib/presentations.bib", "presentations-list", ["howpublished", "booktitle", "venue", "publisher"],
     { empty: "No presentations found.", error: "Presentations file not found." });
